@@ -1,3 +1,0 @@
-# cdetamble.github.io
-
-test
