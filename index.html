@@ -26,33 +26,40 @@
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 	
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	 
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 <main>
-	<br><br>
-	<img class="circle-hover" src="img/mg.jpg" style="border-radius: 50%;">
-	<h1 class="title text-3d" style="font-family: 'Permanent Marker', sans-serif;">MouthlessGames</h1>
-	<p class="smaller">Making <b>Mind-Bending</b> Games.</p>
+	<h1>
+		<img id="logo" class="circle-hover" src="img/mg.jpg" style="border-radius: 50%;">
+		<span class="title text-3d">MouthlessGames</span>
+	</h1>
+	<p class="sub-title smaller">Making <b>Mind-Bending</b> Games.</p>
 
+	<div class="image-container">
+	  <a href="https://twitter.com/MouthlessGames">
+		<img id="promo_image" src="img/evelyn.jpg">
+	  </a>
+	  <div class="centered">
+		<p class="">Closed Demo Release at<br id="break"> <b>August 25, 2019</b></p>
+		<div id="subscribe-box" class="input-group">
+		  <input id="mail" type="email" class="form-control input-lg" placeholder="your@email.com">
+		  <span class="input-group-btn">
+			<input id="subscribe" class="btn btn-primary btn-lg" type="submit" value="I wanna play the Demo!">
+		  </span>
+		</div><!-- /input-group -->
+	  </div>
+	</div>
 	
-	<p class="smaller">Currently working on a medieval <b>turn-based</b> strategy RPG:</p>
-	<br>
-	<a href="https://twitter.com/MouthlessGames"><img src="img/evelyn.jpg"></a>
-
-	<br><br>
-
-
 	<p class="smaller">Copyright &copy; 2019 · <a href="mailto:info@mouthlessgames.com">Christian DeTamble</a></p>
-
 	<br>
 </main>
-	
+
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -62,28 +69,22 @@
 	<div class="modal-content">
 	  <div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 id="modal-title" class="modal-title">Modal Header</h4>
+		<h4 id="modal-title" class="modal-title">Information</h4>
 	  </div>
 	  <div class="modal-body">
-		<p id="modal-message">Some text in the modal.</p>
+		<p id="modal-message">Something went wrong.</p>
 	  </div>
 	  <div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		<button type="button" class="btn btn-success" data-dismiss="modal">Yay!</button>
 	  </div>
 	</div>
 
   </div>
 </div>
 
-
-
 <script>
-	$('#myModal').on('hidden.bs.modal', function () {
-		window.location.href = "https://mouthlessgames.com";
-	});
 	function findGetParameter(parameterName) {
-		var result = null,
-			tmp = [];
+		var result = null, tmp = [];
 		location.search
 			.substr(1)
 			.split("&")
@@ -93,8 +94,16 @@
 			});
 		return result;
 	}
+	function validateEmail(email) {
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(String(email).toLowerCase());
+	}
+
 	const message = findGetParameter('modal_message');
 	if (message) {
+		$('#myModal').on('hidden.bs.modal', function () {
+			window.location.href = "https://mouthlessgames.com";
+		});
 		const title = findGetParameter('modal_title');
 		if (title) {
 			$('#modal-title').html(title);
@@ -102,6 +111,20 @@
 		$('#modal-message').html(message);
 		$('#myModal').modal('show');
 	}
+	
+	$('#subscribe').click(function () {
+		const mail = $('#mail').val();
+		if (mail && mail.length > 0) {
+			if (validateEmail(mail)) {
+				const subscribedFor = "Evelyn von Wolkenstein Demo Release";
+				const successMessage = "Thank you for subscribing! You will be notified as soon as the demo is out!";
+				
+				window.location.href = "http://therefactory.bplaced.net/api/subscribe.php?mail_address=" + encodeURIComponent(mail)
+					+ "&subscribed_for=" + encodeURIComponent(subscribedFor)
+					+ "&success_message=" + encodeURIComponent(successMessage);
+			}
+		}
+	});
 </script>
 </body>
 </html>
