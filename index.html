@@ -127,7 +127,7 @@
 			if (mail && mail.length > 0) {
 				if (validateEmail(mail)) {
 					const subscribedFor = "Evelyn von Wolkenstein Demo Release";
-					const successMessage = "Thank you for subscribing!<br> You will be notified as soon as the demo is out.";
+					const successMessage = "Thank you for subscribing!<br><br> On release day, you'll receive a private mail containing instructions on how to download your free copy the game.<br><br> Have a great summer until then!";
 					
 					window.location.href = "http://therefactory.bplaced.net/api/subscribe.php?mail_address=" + encodeURIComponent(mail)
 						+ "&subscribed_for=" + encodeURIComponent(subscribedFor)
