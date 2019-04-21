@@ -5,10 +5,10 @@ html, body {
   height: 100%;
 }
 
-  p {
-		font-size: 24px;
-		padding: 0 5px;
-  }
+p {
+	font-size: 24px;
+	padding: 0 5px;
+}
 
 .smaller {
 	    color: gray;
@@ -51,13 +51,12 @@ body {
 	  color: white;
   }
  a:hover #promo_image {
-	 transition: all 0.15s ease;
 	 opacity: 0.8;
  }
-  a:hover .centered {
-	 transition: all 0.15s ease;
-	  opacity: 0.8;
- }
+ 
+#promo_image {
+	 transition: all 0.15s ease;	
+}
 
 #subscribe-box {
     margin: 0 auto;
@@ -70,7 +69,6 @@ main {
 	color: white;
 	text-align: center;
 }
-
  
 main p {
    text-shadow: 2px 2px 4px #000000cf;
@@ -101,7 +99,6 @@ img.circle-hover:hover {
 	display: none;
 }
 
-
 @media (max-width: 1024px) {
 	.input-group-addon, .input-group-btn, .input-group .form-control {
 		display: block;
@@ -130,7 +127,6 @@ img.circle-hover:hover {
 	}
 }
 
-
 @media (max-width: 480px) {
 	.title {
 		font-size: 33px;
@@ -151,7 +147,6 @@ img.circle-hover:hover {
 	#promo_image {
 		opacity: 1;
 	}
-	
 }
 
 @media (min-width: 480px) {
@@ -164,8 +159,6 @@ img.circle-hover:hover {
 	.sub-title {
 		padding-left: 40px;
 	}
-	
-	
 }
 
 /* Container holding the image and the text */
@@ -174,5 +167,4 @@ img.circle-hover:hover {
   text-align: center;
   color: white;
   margin-bottom: 10px;
-
 }
