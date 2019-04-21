@@ -10,8 +10,12 @@ p {
 	padding: 0 5px;
 }
 
+#modal-message {
+	font-size: 20px;
+}
+
 .smaller {
-	    color: gray;
+	color: gray;
     font-size: 13.333333px;
 }
 
