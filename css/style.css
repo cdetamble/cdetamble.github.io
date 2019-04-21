@@ -5,7 +5,6 @@ html, body {
   }
 
   p {
- text-shadow: 2px 2px 4px #000000cf;
 		font-size: 24px;
 		padding: 0 20px;
   }
@@ -23,22 +22,27 @@ max-width: calc(100% - 40px);
 body {
   height: 100%;
   width: 100%;
-  color: white;
-  
-  text-align: center;
-
   background-color: #303030;
   overflow-x: hidden; }
   body a {
     text-decoration: none;
     color: #818181; }
   body a:hover {
-	  text-decoration: underline;
+	 text-decoration: underline;
     color: #f1f1f1; }
 	
  a:hover img {
 	 transition: all 0.15s ease;
 	 opacity: 0.5;
+ }
+ 
+ main {
+ color: white;
+  text-align: center;
+  
+  main p {
+	   text-shadow: 2px 2px 4px #000000cf;
+  }
  }
 
 .circle-hover {

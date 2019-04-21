@@ -5,7 +5,6 @@
 	<title>MouthlessGames</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Crimson+Text|Lato|Permanent+Marker" rel="stylesheet">
 	
 	<!-- Favicon -->
@@ -26,9 +25,17 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
+	
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	 
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<br><br>
+
+<main>
+	<br><br>
 	<img class="circle-hover" src="img/mg.jpg" style="border-radius: 50%;">
 	<h1 class="title text-3d" style="font-family: 'Permanent Marker', sans-serif;">MouthlessGames</h1>
 	<p class="smaller">Making <b>Mind-Bending</b> Games.</p>
@@ -44,13 +51,54 @@
 	<p class="smaller">Copyright &copy; 2019 · <a href="mailto:info@mouthlessgames.com">Christian DeTamble</a></p>
 
 	<br>
+</main>
 	
-		<script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
-	<script>
-		
-	</script>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+	<!-- Modal content-->
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 id="modal-title" class="modal-title">Modal Header</h4>
+	  </div>
+	  <div class="modal-body">
+		<p id="modal-message">Some text in the modal.</p>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	  </div>
+	</div>
+
+  </div>
+</div>
+
+
+
+<script>
+	function findGetParameter(parameterName) {
+		var result = null,
+			tmp = [];
+		location.search
+			.substr(1)
+			.split("&")
+			.forEach(function (item) {
+			  tmp = item.split("=");
+			  if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+			});
+		return result;
+	}
+	const message = findGetParameter('modal_message');
+	if (message) {
+		const title = findGetParameter('modal_title');
+		if (title) {
+			$('#modal-title').html(title);
+		}
+		$('#modal-message').html(message);
+		$('#myModal').modal('show');
+	}
+</script>
 </body>
 </html>
