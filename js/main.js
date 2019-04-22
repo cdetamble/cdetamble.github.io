@@ -17,15 +17,13 @@ $(document).ready(function() {
 
 	const message = findGetParameter('modal_message');
 	if (message) {
-		$('#myModal').on('hidden.bs.modal', function () {
-			window.location.href = "https://mouthlessgames.com";
-		});
 		const title = findGetParameter('modal_title');
 		if (title) {
 			$('#modal-title').html(title);
 		}
 		$('#modal-message').html(message);
 		$('#myModal').modal('show');
+		window.history.replaceState({}, document.title, "/");
 	}
 
 	$('#myForm').submit(function(e){
