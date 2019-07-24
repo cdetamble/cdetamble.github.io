@@ -8,15 +8,12 @@ html, body {
 p {
 	font-size: 24px;
 	padding: 0 5px;
+	color: gray;
+    font-size: 13.333333px;
 }
 
 #modal-message {
 	font-size: 20px;
-}
-
-.smaller {
-	color: gray;
-    font-size: 13.333333px;
 }
 
 h1 {
@@ -40,7 +37,7 @@ h1 {
 }
 
 #logo {
-	margin-right: 5px;
+  max-width: 100px;
 }
 
 body {
@@ -81,7 +78,7 @@ main p {
 .circle-hover {
   width: 80%;
   box-shadow: 0 0 11px 0 black;
-  max-width: 50px;
+
   transition: all 0.15s ease;
 }
 
@@ -139,9 +136,7 @@ img.circle-hover:hover {
 	.sub-title {
 		margin-top: 5px;
 	}
-	#logo {
-		display: none;
-	}
+	
 	#subscribe-box {
 		margin-bottom: 20px;
 	}
