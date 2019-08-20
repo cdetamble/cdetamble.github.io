@@ -1,42 +1,93 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
 body {
 	margin: 0;
-	font-family: "EB Garamond", serif;
-    font-size: 100%;
+	font-family: "Source Sans Pro", sans-serif;
     line-height: 150%;
     color: #323232;
-	font-size: 1rem;
+	background-color: #f1f1f1;
+	font-size: 14px;
 }
 
 h1,h2,h3,h4,h5 {
 	margin: 0;
-	padding: 0;
+	padding: 1rem;
+	padding-bottom: 0;
 }
+
 nav {
-	text-align: center;
+	font-family: "Source Sans Pro", sans-serif;
 	position: sticky;
+	left: 0;
+	right: 0;
     top: 0;
     z-index: 1;
-    background-color: white;
-    /*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);*/
+    background-color: #f1f1f1;
+}
+
+nav ul {
+	list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+nav ul li {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+
+nav ul li a {
+	display: inline-block;
+	padding: 0.25rem 0.5rem;
+	color: #444444;
+	border: 1px solid #f1f1f1;
+    background-color: #e6e6e6;
 }
 
 main {
-	padding: 1rem;
-    position: relative;
-    top: 0;
-	margin: auto;
+	background-color: white;
+}
+
+.container {
 	max-width: 38.125rem;
+	margin: auto;
+	position: relative;
+	height: 100%;
 }
 
 footer {
 	padding: 0 1rem;
 	text-align: center;
+	font-family: "Source Sans Pro", sans-serif;
+}
+
+.date {
+	padding: 0 1rem;
+}
+	
+p {
+    margin: 0;
+	padding: 1rem;
+}
+
+a {
+	text-decoration: none;
+	color: #9e7100;
+}
+
+a:hover {
+	text-decoration: underline;
 }
 
 hr {
 	padding: 0;
 	margin: auto;
-	height: 1px;
 	width: 100%;
 	border-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(125, 125, 125, 0.5), rgba(255, 255, 255, 0)) 1;
     border-width: 1px;
@@ -52,10 +103,8 @@ hr {
 }
 
 .logo {
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-	padding: 1rem 0;
+	padding: 0.75rem;
+    vertical-align: middle
 }
 
 .divider {
@@ -65,12 +114,133 @@ hr {
 	padding: 0;
 }
 
-.article-header {
-	margin: 0 0 1rem;
-    font-weight: 400;
+#hamburger {
+	display: none;
+	right: 1rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-@font-face {
-  font-family: "Source Sans Pro";
-  src: url(../fonts/sourcesanspro-regular-webfont.woff2);
+nav .right-align {
+	position: absolute;
+    right: 1rem;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+nav ul li a:hover {
+	text-decoration: none;
+}
+
+#hamburger a:hover,
+#hmenu a:hover {
+	border-color: #aaa;
+	background-color: #ddd;
+}
+
+#vmenu a:hover {
+	background-color: #ddd;
+}
+
+#vmenu {
+	position: absolute;
+	right: 0;
+	left: 0;
+	display: none;
+}
+
+#vmenu li {
+	left: 0;
+	right: 0;
+	background-color: #f1f1f1;
+	display: none;
+}
+#vmenu li {
+	display: inherit;
+}
+#vmenu li a {
+	background: none;
+	width: calc(100% - 18px);
+	border: none;
+	text-align: center;
+}
+	
+@media (max-width: 610px) {	
+	#hmenu {
+		display: none;
+	}
+	#hamburger {
+		display: inline-block;
+	}
+}
+
+@media (min-width: 610px) {
+	#vmenu {
+		display: none !important;
+	}
+}
+
+.text-center {
+	text-align: center;
+}
+
+.italic {
+	font-style: italic;
+}
+
+article {
+	position: relative;
+    border-top: none;
+	border-bottom: none;
+	border-left: 1px solid white;
+    border-right: 1px solid white;
+	/*border-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(125, 125, 125, 0.5), rgba(255, 255, 255, 0)) 1;*/
+}
+
+article:hover {
+	border-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(125, 125, 125, 0.5), rgba(255, 255, 255, 0)) 1;
+}
+
+article:last-child {
+	padding-bottom: 1rem;
+}
+
+article .image {
+	margin-left: 1rem;
+    box-shadow: 0px 0px 3px 3px #ccc;
+    width: 11rem;
+    height: 7rem;
+    background-position: center;
+    background-size: cover;
+	background-repeat: no-repeat;
+    display: inline-block;
+	border-radius: 4px;	
+}
+
+article .image:hover {
+	opacity: 0.75;
+}
+
+.date {
+	color: dimgray;
+}
+	
+.inset {
+    box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.14);
+	background-color: #f9f9f9;
+}
+
+.outset {
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.14);
+	background-color: #f9f9f9;
+}
+
+.success {
+    background-color: rgba(200, 255, 214, 0.43137254901960786);
+    color: green;
+}
+
+.outset.success {
+	 box-shadow: 1px 1px 2px 1px #6bbf816e;
 }
