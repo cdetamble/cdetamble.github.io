@@ -14,8 +14,7 @@ body {
 
 h1,h2,h3,h4,h5 {
 	margin: 0;
-	padding: 1rem;
-	padding-bottom: 0;
+	padding: 1rem 1rem 0;
 }
 
 nav {
@@ -28,10 +27,13 @@ nav {
     background-color: #f1f1f1;
 }
 
+ul {
+    margin: 0;
+}
+
 nav ul {
 	list-style: none;
-    padding: 0;
-    margin: 0;
+	padding: 0;
     display: inline-block;
     vertical-align: middle;
 }
@@ -42,7 +44,10 @@ nav ul li {
 	margin: 0;
 }
 
+button,
+form input[type=submit],
 nav ul li a {
+	font-family: inherit;
 	display: inline-block;
 	padding: 0.25rem 0.5rem;
 	color: #444444;
@@ -68,7 +73,13 @@ footer {
 }
 
 .date {
+	color: dimgray;
 	padding: 0 1rem;
+}
+
+.comment .date {
+	position: absolute;
+	right: 1rem;
 }
 	
 p {
@@ -89,17 +100,20 @@ hr {
 	padding: 0;
 	margin: auto;
 	width: 100%;
-	border-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(125, 125, 125, 0.5), rgba(255, 255, 255, 0)) 1;
-    border-width: 1px;
-    border-style: solid;
-    border-top: none;
-    border-left: none;
-    border-right: none;
 	max-width: 38.125rem;
 }
 
-.title {
-	padding: 1rem;
+hr.gradient {
+	border-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(125, 125, 125, 0.5), rgba(255, 255, 255, 0)) 1;
+	border-width: 1px;
+	border-style: solid;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+hr.dashed {
+	border: 1px dashed #eee;
 }
 
 .logo {
@@ -133,10 +147,17 @@ nav ul li a:hover {
 	text-decoration: none;
 }
 
+ul li a.active {
+	font-weight: bold;
+}
+
+button:hover,
+form input[type=submit]:hover,
 #hamburger a:hover,
 #hmenu a:hover {
 	border-color: #aaa;
 	background-color: #ddd;
+	cursor: pointer;
 }
 
 #vmenu a:hover {
@@ -185,6 +206,10 @@ nav ul li a:hover {
 	text-align: center;
 }
 
+.smaller {
+	font-size: smaller;
+}
+
 .italic {
 	font-style: italic;
 }
@@ -208,7 +233,7 @@ article:last-child {
 
 article .image {
 	margin-left: 1rem;
-    box-shadow: 0px 0px 3px 3px #ccc;
+    box-shadow: 0 0 3px 3px #ccc;
     width: 11rem;
     height: 7rem;
     background-position: center;
@@ -222,18 +247,18 @@ article .image:hover {
 	opacity: 0.75;
 }
 
-.date {
-	color: dimgray;
+.comment {
+	margin: 1rem;
 }
-	
+
 .inset {
-    box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.14);
+    box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.14);
 	background-color: #f9f9f9;
 }
 
 .outset {
     box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.14);
-	background-color: #f9f9f9;
+	background-color: #f9f9f9;;
 }
 
 .success {
@@ -243,4 +268,40 @@ article .image:hover {
 
 .outset.success {
 	 box-shadow: 1px 1px 2px 1px #6bbf816e;
+}
+
+form.add-comment {
+	position: relative;
+}
+
+form.add-comment label {
+	margin: 0 1rem;
+	
+}
+
+form.add-comment label .title {
+	font-weight: bold;
+}
+
+form.add-comment input[type=submit] {
+	font-family: inherit;
+	cursor: pointer;
+	position: absolute;
+	right: 1rem;
+	bottom: 0;
+}
+
+form.add-comment textarea.form-input {
+	padding: 0.5rem;
+}
+
+form.add-comment .form-input {
+	margin: 0.5rem 1rem 0 1rem;
+	width: calc(100% - 3rem);
+	max-width: calc(100% - 3rem);
+	min-width: calc(100% - 3rem);
+	min-height: 2rem;
+	padding: 0 0.5rem;
+	border: none;
+	font-family: inherit;
 }

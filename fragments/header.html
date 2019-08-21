@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>MouthlessGames</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Fonts -->
+	<link rel="stylesheet" type="text/css" href="{baseUrl}css/fonts.css">
+	
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="{baseUrl}css/modal.css">
+	<link rel="stylesheet" type="text/css" href="{baseUrl}css/buttons.css">
+	<link rel="stylesheet" type="text/css" href="{baseUrl}css/style.css">
+	
+	<!-- Favicon -->
+	<link rel="icon" type="image/ico" href="{baseUrl}favicon.ico">
+	
+	<script>
+		var Globals = {};
+		Globals.baseUrl = "{baseUrl}";
+		Globals.databaseUrl = "http://localhost/therefactory/api/mouthlessgames/";
+		Globals.blogPostId = "{blogPostId}";
+		{customJs}
+	</script>
+</head>
+<body>
+
+<nav>
+	<div class="container">
+		<a href="{baseUrl}"><img class="logo" src="{baseUrl}img/title2.png" alt=""></a>
+		<div class="right-align">
+			<ul id="hmenu">
+				<li><a href="{baseUrl}">Blog</a></li>
+				<li><a href="{baseUrl}our-games">Our Games</a></li>
+				<li><a href="{baseUrl}game-tutorials">Game Tutorials</a></li>
+				<li><a href="{baseUrl}about">About</a></li>
+			</ul>
+			<ul id="hamburger">
+				<li id="toggle_vmenu"><a href="#">Menu</a></li>
+			</ul>
+		</div>
+		<hr class="gradient">
+		<ul id="vmenu">
+			<li><a href="{baseUrl}">Blog</a>
+				<hr class="gradient">
+			</li>
+			<li><a href="{baseUrl}our-games">Our Games</a>
+				<hr class="gradient">
+			</li>
+			<li><a href="{baseUrl}game-tutorials">Game Tutorials</a>
+				<hr class="gradient">
+			</li>
+			<li><a href="{baseUrl}about">About</a>
+				<hr class="gradient">
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<main>
+	<div class="container">

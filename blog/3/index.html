@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>MouthlessGames</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Fonts -->
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/fonts.css">
+	
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/modal.css">
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/buttons.css">
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/style.css">
+	
+	<!-- Favicon -->
+	<link rel="icon" type="image/ico" href="/mouthlessgames/favicon.ico">
+	
+	<script>
+		var Globals = {};
+		Globals.baseUrl = "/mouthlessgames/";
+		Globals.databaseUrl = "http://localhost/therefactory/api/mouthlessgames/";
+		Globals.blogPostId = "3";
+		if (!window.location.search) {
+	window.location = Globals.databaseUrl + "?command=getComments&subjectId=" + Globals.blogPostId
+		+ "&returnBaseUrl=" + window.location.origin + window.location.pathname;
+} else {
+	if (window.location.search.indexOf('result') !== -1) {
+		let search = window.location.search;
+		search = search
+			.substr("?result=".length)
+			.replace(/%22/g, "\"");
+		Globals.comments = JSON.parse(search);
+		window.history.replaceState("", "", "?");
+	}
+}
+
+
+	</script>
+</head>
+<body>
+
+<nav>
+	<div class="container">
+		<a href="/mouthlessgames/"><img class="logo" src="/mouthlessgames/img/title2.png" alt=""></a>
+		<div class="right-align">
+			<ul id="hmenu">
+				<li><a href="/mouthlessgames/">Blog</a></li>
+				<li><a href="/mouthlessgames/our-games">Our Games</a></li>
+				<li><a href="/mouthlessgames/game-tutorials">Game Tutorials</a></li>
+				<li><a href="/mouthlessgames/about">About</a></li>
+			</ul>
+			<ul id="hamburger">
+				<li id="toggle_vmenu"><a href="#">Menu</a></li>
+			</ul>
+		</div>
+		<hr class="gradient">
+		<ul id="vmenu">
+			<li><a href="/mouthlessgames/">Blog</a>
+				<hr class="gradient">
+			</li>
+			<li><a href="/mouthlessgames/our-games">Our Games</a>
+				<hr class="gradient">
+			</li>
+			<li><a href="/mouthlessgames/game-tutorials">Game Tutorials</a>
+				<hr class="gradient">
+			</li>
+			<li><a href="/mouthlessgames/about">About</a>
+				<hr class="gradient">
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<main>
+	<div class="container">
+<article itemid="3">
+	<h3 class="title">And we are back!</h3>
+	<p class="date">August 20, 2019</p>
+	<p>	Hello World</p>
+</article>
+
+<hr class="dashed">
+
+<article>
+	<h3>Comments</h3>
+	
+	<div id="comments"></div>
+	
+	<p></p>
+	
+	<form class="add-comment">
+		<label for="input_name">
+			<span class="title">Name</span>
+			<input id="input_name" type="text" class="form-input inset" placeholder="Name (Optional)" value="">
+		</label>
+		
+		<p></p>
+		
+		<label for="input_comment">
+			<span class="title">Comment</span>
+			<textarea id="input_comment" class="form-input inset" rows="5" placeholder="Comment"></textarea>
+		</label>
+		
+		<p></p>
+		
+		<input id="add_comment_button" type="submit" value="Add Comment">
+	
+	</form>
+	
+	<p></p>
+</article>
+	</div>
+</main>
+<hr class="gradient">
+<footer>
+	<p>&copy; 2019 - <a href="mailto:info@mouthlessgames.com">info@mouthlessgames.com</a></p>
+
+</footer>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 id="modal-title" class="modal-title">Error</h4>
+			</div>
+			<div class="modal-body">
+				<p id="modal-message">Something went wrong.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	
+	</div>
+</div>
+
+
+<script src="/mouthlessgames/js/jquery-2.1.4.min.js"></script>
+<script src="/mouthlessgames/js/bootstrap.min.js"></script>
+<script src="/mouthlessgames/js/main.js"></script>
+
+</body>
+</html>
