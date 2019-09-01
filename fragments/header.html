@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>MouthlessGames</title>
+	<title>Mouthless Games</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -12,11 +12,17 @@
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="{baseUrl}css/modal.css">
 	<link rel="stylesheet" type="text/css" href="{baseUrl}css/buttons.css">
+	<link rel="stylesheet" type="text/css" href="{baseUrl}css/icomoon.css">
 	<link rel="stylesheet" type="text/css" href="{baseUrl}css/style.css">
-	
+	<link rel="stylesheet" type="text/css" href="{baseUrl}css/ripple.css">
+
 	<!-- Favicon -->
 	<link rel="icon" type="image/ico" href="{baseUrl}favicon.ico">
-	
+
+	<!-- Fancybox -->
+	<link rel="stylesheet" href="{baseUrl}fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{baseUrl}fancybox/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen"/>
+
 	<script>
 		var Globals = {};
 		Globals.baseUrl = "{baseUrl}";
@@ -27,34 +33,32 @@
 </head>
 <body>
 
-<nav>
+<nav style="background-image: url('{baseUrl}img/bg.jpg')">
 	<div class="container">
-		<a href="{baseUrl}"><img class="logo" src="{baseUrl}img/title2.png" alt=""></a>
+		<ul>
+
+		<li class="mdc-ripple-surface">
+			<a class="ripplelink" href="{baseUrl}"><img id="logo" src="{baseUrl}img/title3.png"></a>
+		</li>
+
+		</ul>
 		<div class="right-align">
 			<ul id="hmenu">
-				<li><a href="{baseUrl}">Blog</a></li>
-				<li><a href="{baseUrl}our-games">Our Games</a></li>
-				<li><a href="{baseUrl}game-tutorials">Game Tutorials</a></li>
-				<li><a href="{baseUrl}about">About</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}blog">Blog</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}games">Games</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}tutorials">Tutorials</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}about">About</a></li>
 			</ul>
 			<ul id="hamburger">
-				<li id="toggle_vmenu"><a href="#">Menu</a></li>
+				<li id="toggle_vmenu" class="mdc-ripple-surface"><a class="ripplelink" href="#"><span class="fa icon-bars"></span></a></li>
 			</ul>
 		</div>
-		<hr class="gradient">
+
 		<ul id="vmenu">
-			<li><a href="{baseUrl}">Blog</a>
-				<hr class="gradient">
-			</li>
-			<li><a href="{baseUrl}our-games">Our Games</a>
-				<hr class="gradient">
-			</li>
-			<li><a href="{baseUrl}game-tutorials">Game Tutorials</a>
-				<hr class="gradient">
-			</li>
-			<li><a href="{baseUrl}about">About</a>
-				<hr class="gradient">
-			</li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}blog">Blog</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}games">Games</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}tutorials">Tutorials</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}about">About</a></li>
 		</ul>
 	</div>
 </nav>

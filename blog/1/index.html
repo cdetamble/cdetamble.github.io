@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>MouthlessGames</title>
+	<title>Mouthless Games</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -12,63 +12,53 @@
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/modal.css">
 	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/buttons.css">
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/icomoon.css">
 	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/style.css">
-	
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/ripple.css">
+
 	<!-- Favicon -->
 	<link rel="icon" type="image/ico" href="/mouthlessgames/favicon.ico">
-	
+
+	<!-- Fancybox -->
+	<link rel="stylesheet" href="/mouthlessgames/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/mouthlessgames/fancybox/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen"/>
+
 	<script>
 		var Globals = {};
 		Globals.baseUrl = "/mouthlessgames/";
 		Globals.databaseUrl = "http://localhost/therefactory/api/mouthlessgames/";
 		Globals.blogPostId = "1";
-		if (!window.location.search) {
-	window.location = Globals.databaseUrl + "?command=getComments&subjectId=" + Globals.blogPostId
-		+ "&returnBaseUrl=" + window.location.origin + window.location.pathname;
-} else {
-	if (window.location.search.indexOf('result') !== -1) {
-		let search = window.location.search;
-		search = search
-			.substr("?result=".length)
-			.replace(/%22/g, "\"");
-		Globals.comments = JSON.parse(search);
-		window.history.replaceState("", "", "?");
-	}
-}
-
-
+		
 	</script>
 </head>
 <body>
 
-<nav>
+<nav style="background-image: url('/mouthlessgames/img/bg.jpg')">
 	<div class="container">
-		<a href="/mouthlessgames/"><img class="logo" src="/mouthlessgames/img/title2.png" alt=""></a>
+		<ul>
+
+		<li class="mdc-ripple-surface">
+			<a class="ripplelink" href="/mouthlessgames/"><img id="logo" src="/mouthlessgames/img/title3.png"></a>
+		</li>
+
+		</ul>
 		<div class="right-align">
 			<ul id="hmenu">
-				<li><a href="/mouthlessgames/">Blog</a></li>
-				<li><a href="/mouthlessgames/our-games">Our Games</a></li>
-				<li><a href="/mouthlessgames/game-tutorials">Game Tutorials</a></li>
-				<li><a href="/mouthlessgames/about">About</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/blog">Blog</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/games">Games</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/tutorials">Tutorials</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/about">About</a></li>
 			</ul>
 			<ul id="hamburger">
-				<li id="toggle_vmenu"><a href="#">Menu</a></li>
+				<li id="toggle_vmenu" class="mdc-ripple-surface"><a class="ripplelink" href="#"><span class="fa icon-bars"></span></a></li>
 			</ul>
 		</div>
-		<hr class="gradient">
+
 		<ul id="vmenu">
-			<li><a href="/mouthlessgames/">Blog</a>
-				<hr class="gradient">
-			</li>
-			<li><a href="/mouthlessgames/our-games">Our Games</a>
-				<hr class="gradient">
-			</li>
-			<li><a href="/mouthlessgames/game-tutorials">Game Tutorials</a>
-				<hr class="gradient">
-			</li>
-			<li><a href="/mouthlessgames/about">About</a>
-				<hr class="gradient">
-			</li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/blog">Blog</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/games">Games</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/tutorials">Tutorials</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/about">About</a></li>
 		</ul>
 	</div>
 </nav>
@@ -78,7 +68,7 @@
 <article itemid="1">
 	<h3 class="title">We are working on a 3D Game!</h3>
 	<p class="date">August 20, 2019</p>
-	<p>	We started to work on our biggest and most ambitious project so far.	Up until now, what we made where 2D games only and most of them where created over a single weekend for	the Ludum Dare game development competition.	This new project though has a scale of rather months than days, but we will still regulary participate	in Ludum Dare to train our game dev skills.</p><p>	Features:<ul>	<li>Turn-based Strategy</li>	<li>Modern 3D Visuals</li>	<li>Story-driven Single-Player Campaign</li>	<li>approx. 5 hours of play-time</li>	<li>4 playable factions, each with their unique units</li>	<li>Skirmish against an ai or local human opponents</li></ul></p><p>	Here are already some screenshots:	<a href="#">		<div class="image" style="background-image:url('/mouthlessgames/img/test2.gif')"></div>	</a>	<a href="#">		<div class="image" style="background-image:url('/mouthlessgames/img/test.gif')"></div>	</a>	<a href="#">		<div class="image" style="background-image:url('/mouthlessgames/img/test3.gif')"></div>	</a></p><p>	We started to work on our biggest and most ambitious project so far.	Up until now what we made where 2D games only - most of them made for Ludum Dare.</p>
+	<p>	We started to work on our biggest and most ambitious project so far.	Up until now, what we made where 2D games only and most of them where created over a single weekend for	the Ludum Dare game development competition.	This new project though has a scale of rather months than days, but we will still regulary participate	in Ludum Dare to train our game dev skills.</p><p>	<b>Features:</b>	<ul>		<li>Turn-based Strategy</li>		<li>Modern 3D Visuals</li>		<li>Story-driven Single-Player Campaign</li>		<li>approx. 5 hours of play-time</li>		<li>4 playable factions, each with their unique units</li>		<li>Skirmish against an ai or local human opponents</li>	</ul></p><p>	Here are already some screenshots:</p><p>	<a href="/mouthlessgames/img/test2.gif" class="fancybox" rel="gallery">		<img src="/mouthlessgames/img/test2.gif">	</a>	<a href="/mouthlessgames/img/wer.gif" class="fancybox" rel="gallery">		<img src="/mouthlessgames/img/test.gif">	</a>	<a href="/mouthlessgames/img/noelem233.gif" class="fancybox" rel="gallery">		<img src="/mouthlessgames/img/test3.gif">	</a></p><p>	We started to work on our biggest and most ambitious project so far.	Up until now what we made where 2D games only - most of them made for Ludum Dare.</p>
 </article>
 
 <hr class="dashed">
@@ -113,10 +103,9 @@
 </article>
 	</div>
 </main>
-<hr class="gradient">
-<footer>
-	<p>&copy; 2019 - <a href="mailto:info@mouthlessgames.com">info@mouthlessgames.com</a></p>
 
+<footer>
+    <p>© Copyright 2018 – 2019  <br>Website Theme by <a href="/mouthlessgames/">mouthlessgames.com</a></p>
 </footer>
 
 <!-- Modal -->
@@ -139,10 +128,20 @@
 	</div>
 </div>
 
+<!-- Reading Bar -->
+<div id="readingbar">
+    <div id="readingbar-progress"></div>
+</div>
 
-<script src="/mouthlessgames/js/jquery-2.1.4.min.js"></script>
+<script src="/mouthlessgames/js/jquery-1.12.4.min.js"></script>
 <script src="/mouthlessgames/js/bootstrap.min.js"></script>
 <script src="/mouthlessgames/js/main.js"></script>
+
+<!-- Fancybox -->
+<script type="text/javascript" src="/mouthlessgames/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="/mouthlessgames/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
+<script type="text/javascript" src="/mouthlessgames/fancybox/helpers/jquery.fancybox-media.js"></script>
+<script type="text/javascript" src="/mouthlessgames/js/mdc.ripple.min.js"></script>
 
 </body>
 </html>

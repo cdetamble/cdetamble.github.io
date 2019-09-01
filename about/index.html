@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>MouthlessGames</title>
+	<title>Mouthless Games</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -12,11 +12,17 @@
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/modal.css">
 	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/buttons.css">
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/icomoon.css">
 	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/style.css">
-	
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/ripple.css">
+
 	<!-- Favicon -->
 	<link rel="icon" type="image/ico" href="/mouthlessgames/favicon.ico">
-	
+
+	<!-- Fancybox -->
+	<link rel="stylesheet" href="/mouthlessgames/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/mouthlessgames/fancybox/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen"/>
+
 	<script>
 		var Globals = {};
 		Globals.baseUrl = "/mouthlessgames/";
@@ -27,49 +33,69 @@
 </head>
 <body>
 
-<nav>
+<nav style="background-image: url('/mouthlessgames/img/bg.jpg')">
 	<div class="container">
-		<a href="/mouthlessgames/"><img class="logo" src="/mouthlessgames/img/title2.png" alt=""></a>
+		<ul>
+
+		<li class="mdc-ripple-surface">
+			<a class="ripplelink" href="/mouthlessgames/"><img id="logo" src="/mouthlessgames/img/title3.png"></a>
+		</li>
+
+		</ul>
 		<div class="right-align">
 			<ul id="hmenu">
-				<li><a href="/mouthlessgames/">Blog</a></li>
-				<li><a href="/mouthlessgames/our-games">Our Games</a></li>
-				<li><a href="/mouthlessgames/game-tutorials">Game Tutorials</a></li>
-				<li><a href="/mouthlessgames/about">About</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/blog">Blog</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/games">Games</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/tutorials">Tutorials</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/about">About</a></li>
 			</ul>
 			<ul id="hamburger">
-				<li id="toggle_vmenu"><a href="#">Menu</a></li>
+				<li id="toggle_vmenu" class="mdc-ripple-surface"><a class="ripplelink" href="#"><span class="fa icon-bars"></span></a></li>
 			</ul>
 		</div>
-		<hr class="gradient">
+
 		<ul id="vmenu">
-			<li><a href="/mouthlessgames/">Blog</a>
-				<hr class="gradient">
-			</li>
-			<li><a href="/mouthlessgames/our-games">Our Games</a>
-				<hr class="gradient">
-			</li>
-			<li><a href="/mouthlessgames/game-tutorials">Game Tutorials</a>
-				<hr class="gradient">
-			</li>
-			<li><a href="/mouthlessgames/about">About</a>
-				<hr class="gradient">
-			</li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/blog">Blog</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/games">Games</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/tutorials">Tutorials</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/about">About</a></li>
 		</ul>
 	</div>
 </nav>
 
 <main>
 	<div class="container">
-				<p>
-				MouthlessGames is a one-person game development studio from Austria.
-				</p>
-	</div>
-</main>
-<hr class="gradient">
-<footer>
-	<p>&copy; 2019 - <a href="mailto:info@mouthlessgames.com">info@mouthlessgames.com</a></p>
+<div id="about" class="container">
+    <div class="padding-1 "><img src="/mouthlessgames/img/4.jpg" class="border-radius"></div>
 
+    <ul class="expanded">
+        <li>Independent game development studio from Austria.</li>
+        <li><a href="/mouthlessgames/games">Our games</a> are <b>immersive</b> experiences.</li>
+        <li>Founded in 2018.</li>
+        <li>Contact us at <a href="mailto:info@mouthlessgames.com">info@mouthlessgames.com</a> or on <a href="https://twitter.com/MouthlessGames">Twitter</a>.</li>
+    </ul>
+
+    <hr class="dashed">
+
+    <p>
+        <i>"So hello everyone - Welcome back!"</i>
+    </p>
+
+    <p>
+        As with every creative product - be it books or paintings, games are entrances to virtual worlds.
+        To the consumer it is an <b>immersing</b> experience, to the artist it is a channel to express <b>creative energy</b> into.
+    </p>
+
+    <p>
+        <img src="/mouthlessgames/img/avatar.png" class="rounded shadow avatar">
+        My name is Christian and I started MouthlessGames to share my passion for creating such immersive worlds.
+    </p>
+
+</div>	</div>
+</main>
+
+<footer>
+    <p>© Copyright 2018 – 2019  <br>Website Theme by <a href="/mouthlessgames/">mouthlessgames.com</a></p>
 </footer>
 
 <!-- Modal -->
@@ -92,10 +118,20 @@
 	</div>
 </div>
 
+<!-- Reading Bar -->
+<div id="readingbar">
+    <div id="readingbar-progress"></div>
+</div>
 
-<script src="/mouthlessgames/js/jquery-2.1.4.min.js"></script>
+<script src="/mouthlessgames/js/jquery-1.12.4.min.js"></script>
 <script src="/mouthlessgames/js/bootstrap.min.js"></script>
 <script src="/mouthlessgames/js/main.js"></script>
+
+<!-- Fancybox -->
+<script type="text/javascript" src="/mouthlessgames/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="/mouthlessgames/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
+<script type="text/javascript" src="/mouthlessgames/fancybox/helpers/jquery.fancybox-media.js"></script>
+<script type="text/javascript" src="/mouthlessgames/js/mdc.ripple.min.js"></script>
 
 </body>
 </html>

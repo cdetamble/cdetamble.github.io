@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace CreateHtmlFiles
 {
@@ -11,10 +12,12 @@ namespace CreateHtmlFiles
             var builder = new Builder("/mouthlessgames/");
             builder.CreateIndex();
             builder.CreateAbout();
-            builder.CreateBlogPosts();
-            builder.CreateOurGames();
-            builder.CreateGameTutorials();
-            
+			builder.CreateOurGames();
+			builder.CreateGameTutorials();
+
+			var blogposts = builder.CreateBlogPosts();
+			builder.CreateBlog(blogposts);
+		    
             //Console.ReadLine();
         }
     }
@@ -47,43 +50,63 @@ namespace CreateHtmlFiles
 
         public void CreateIndex()
         {
-            File.WriteAllText(Path.Combine(_rootDir, "index.html"),
+            WriteAllText(Path.Combine(_rootDir, "index.html"),
                 ResolvePlaceholders(_fragments["header"] + _fragments["index"] + _fragments["footer"]));
         }
 
         public void CreateGameTutorials()
         {
-            var folder = Path.Combine(_rootDir, "game-tutorials");
+            var folder = Path.Combine(_rootDir, "tutorials");
             Directory.CreateDirectory(folder);
 
-            string html = _fragments["header"] + _fragments["game-tutorials"] + _fragments["footer"];
+            string html = _fragments["header"] + _fragments["tutorials"] + _fragments["footer"];
 
-            File.WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
+            WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
         }
 
         public void CreateOurGames()
         {
-            var folder = Path.Combine(_rootDir, "our-games");
+            var folder = Path.Combine(_rootDir, "games");
             Directory.CreateDirectory(folder);
 
-            string html = _fragments["header"] + _fragments["our-games"] + _fragments["footer"];
+            string html = _fragments["header"] + _fragments["games"] + _fragments["footer"];
 
-            File.WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
+            WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
         }
 
-        public void CreateAbout()
+		public void CreateBlog(List<BlogPost> blogposts)
+		{
+			var folder = Path.Combine(_rootDir, "blog");
+			Directory.CreateDirectory(folder);
+
+			StringBuilder sb = new StringBuilder();
+			foreach (var post in blogposts)
+			{
+				sb.Append(_fragments["blog"]
+					.Replace("{title}", post.Title.Trim())
+					.Replace("{id}", post.Id)
+					.Replace("{date}", post.Date)
+					.Replace("{description}", post.Description.Trim()));
+			}
+
+			string html = _fragments["header"] + sb.ToString() + _fragments["footer"];
+
+			WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
+		}
+
+		public void CreateAbout()
         {
-            var about = Path.Combine(_rootDir, "fragments", "about.html");
             var folder = Path.Combine(_rootDir, "about");
             Directory.CreateDirectory(folder);
 
-            string html = _fragments["header"] + File.ReadAllText(about) + _fragments["footer"];
+            string html = _fragments["header"] + _fragments["about"] + _fragments["footer"];
 
-            File.WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
+            WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
         }
 
-        public void CreateBlogPosts()
+        public List<BlogPost> CreateBlogPosts()
         {
+			var blogposts = new List<BlogPost>();
             string[] blogPostPaths = Directory.GetFiles(Path.Combine(_rootDir, "fragments", "posts"));
             foreach (var blogPostPath in blogPostPaths)
             {
@@ -92,30 +115,58 @@ namespace CreateHtmlFiles
                 string id = ExtractFrom("id", lines[0]);
                 string title = ExtractFrom("title", lines[1]);
                 string date = ExtractFrom("date", lines[2]);
-                lines[0] = "";
+				string description = ExtractFrom("description", lines[3]);
+				lines[0] = "";
                 lines[1] = "";
                 lines[2] = "";
-                string content = string.Join("", lines);
+				lines[3] = "";
+				string content = string.Join("", lines);
 
-                var folder = Path.Combine(_rootDir, "blog", id);
+				var blogpost = new BlogPost(id, title, date, description, content);
+				blogposts.Add(blogpost);
+
+				var folder = Path.Combine(_rootDir, "blog", id);
                 Directory.CreateDirectory(folder);
 
                 string html = _fragments["header"]
                                     .Replace("{customJs}", _fragments["load-comments"])
                                     .Replace("{blogPostId}", id)
                     + _fragments["blog-post"]
-                            .Replace("{id}", id)
-                            .Replace("{title}", title)
-                            .Replace("{date}", date)
-                            .Replace("{content}", content)
+                            .Replace("{id}", blogpost.Id)
+                            .Replace("{title}", blogpost.Title)
+                            .Replace("{date}", blogpost.Date)
+                            .Replace("{content}", blogpost.Content)
                     + _fragments["comments"]
                     + _fragments["footer"];
 
-                File.WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
+                WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
             }
-        }
 
-        private string ExtractFrom(string property, string line)
+			return blogposts;
+		}
+
+		private void WriteAllText(string path, string text)
+		{
+			if (File.Exists(path))
+			{
+				var current = File.ReadAllText(path);
+				if (current != text)
+				{
+					Console.WriteLine("Written: " + path);
+					File.WriteAllText(path, text);
+				}
+				else
+				{
+					Console.WriteLine("Untouched: " + path);
+				}
+			} else
+			{
+				Console.WriteLine("Written: " + path);
+				File.WriteAllText(path, text);
+			}
+		}
+
+		private string ExtractFrom(string property, string line)
         {
             return line
                 .Replace("{", "")
