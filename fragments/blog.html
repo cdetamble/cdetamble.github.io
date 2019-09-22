@@ -1,8 +1,16 @@
 <div class="blogpost-card mdc-ripple-surface ripplelink" itemid="{id}">
-    <h3 class="title">{title}</h3>
-    <p class="date">{date}</p>
-    <p>{description}</p>
-    <span class="fa icon-bubbles"></span>
+
+    <div class="image-container">
+        <div class="topic">{topic}</div>
+        <div class="image" style="background-image: url('{image}')"></div>
+    </div>
+
+    <div class="text-container">
+        <h3 class="title">{title}</h3>
+        <p class="date">{date} <span class="fa icon-bubbles"></span> <span class="disqus-comment-count" data-disqus-identifier="{id}"></span></p>
+        <p class="description">{description}</p>
+    </div>
+
+    <div class="read-article">Read Blogpost</div>
+    <div class="arrow">↪</div>
 </div>
-
-

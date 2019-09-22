@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace CreateHtmlFiles
 {
@@ -9,17 +10,19 @@ namespace CreateHtmlFiles
     {
         static void Main(string[] args)
         {
-            var builder = new Builder("/mouthlessgames/");
-            builder.CreateIndex();
-            builder.CreateAbout();
-			builder.CreateOurGames();
-			builder.CreateGameTutorials();
+            var builder = new Builder("/mouthlessgames/", false);
+            
+            builder.CreateGeneric("about", "About");
+			builder.CreateGeneric("legal", "Legal");
+
+			var gamesHtml = builder.CreateGames();
+			//builder.CreateTutorials();
 
 			var blogposts = builder.CreateBlogPosts();
-			builder.CreateBlog(blogposts);
-		    
-            //Console.ReadLine();
-        }
+			var blogHtml = builder.CreateBlog(blogposts);
+			builder.CreateIndex(gamesHtml);
+			//Console.ReadLine();
+		}
     }
 
     class Builder
@@ -28,7 +31,7 @@ namespace CreateHtmlFiles
         private readonly string _baseUrl;
         private readonly Dictionary<string, string> _fragments = new Dictionary<string, string>();
 
-        public Builder(string baseUrl)
+        public Builder(string baseUrl, bool withGoogleAnalytics)
         {
             this._baseUrl = baseUrl;
 
@@ -42,39 +45,54 @@ namespace CreateHtmlFiles
                 string[] files = Directory.GetFiles(directory);
                 foreach (var file in files)
                 {
+					if (Path.GetFileName(file).StartsWith(".")) continue;
                     string key = file.Replace(fragmentsPath + "\\", "");
                     _fragments.Add(Path.GetFileNameWithoutExtension(key), File.ReadAllText(file));
                 }
             }
+
+			if (withGoogleAnalytics)
+			{
+				_fragments["header"] = _fragments["header"].Replace("{analytics}", _fragments["analytics"]);
+			}
         }
 
-        public void CreateIndex()
+        public void CreateIndex(string html)
         {
             WriteAllText(Path.Combine(_rootDir, "index.html"),
-                ResolvePlaceholders(_fragments["header"] + _fragments["index"] + _fragments["footer"]));
+                ResolvePlaceholders(_fragments["header"]
+					.Replace("{with-bg}", "with-bg")
+					.Replace("{title}", "MouthlessGames - Official Website")
+						+ html + _fragments["footer"]));
         }
 
-        public void CreateGameTutorials()
+        public void CreateTutorials()
         {
             var folder = Path.Combine(_rootDir, "tutorials");
             Directory.CreateDirectory(folder);
 
-            string html = _fragments["header"] + _fragments["tutorials"] + _fragments["footer"];
+            string html = _fragments["header"]
+							.Replace("{title}", "Tutorials - MouthlessGames") + _fragments["tutorials"] + _fragments["footer"];
 
             WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
         }
 
-        public void CreateOurGames()
+        public string CreateGames()
         {
             var folder = Path.Combine(_rootDir, "games");
             Directory.CreateDirectory(folder);
 
-            string html = _fragments["header"] + _fragments["games"] + _fragments["footer"];
+			string gamesHtml = _fragments["games"];
+
+			string html = _fragments["header"]
+						.Replace("{title}", "Games - MouthlessGames") + gamesHtml + _fragments["footer"];
 
             WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
-        }
 
-		public void CreateBlog(List<BlogPost> blogposts)
+			return gamesHtml;
+		}
+
+		public string CreateBlog(List<Blogpost> blogposts)
 		{
 			var folder = Path.Combine(_rootDir, "blog");
 			Directory.CreateDirectory(folder);
@@ -86,58 +104,75 @@ namespace CreateHtmlFiles
 					.Replace("{title}", post.Title.Trim())
 					.Replace("{id}", post.Id)
 					.Replace("{date}", post.Date)
+					.Replace("{image}", "{baseUrl}img/" + post.Image)
+					.Replace("{topic}", post.Topic)
+					.Replace("{baseUrl}", _baseUrl)
 					.Replace("{description}", post.Description.Trim()));
 			}
 
-			string html = _fragments["header"] + sb.ToString() + _fragments["footer"];
+			string html = _fragments["header"]
+						.Replace("{title}", "Blog - MouthlessGames") + sb.ToString() + _fragments["footer"];
 
 			WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
+
+			return sb.ToString();
 		}
 
-		public void CreateAbout()
+		public void CreateGeneric(string id, string pageTitle)
         {
-            var folder = Path.Combine(_rootDir, "about");
+            var folder = Path.Combine(_rootDir, id);
             Directory.CreateDirectory(folder);
 
-            string html = _fragments["header"] + _fragments["about"] + _fragments["footer"];
+            string html = _fragments["header"]
+				.Replace("{with-bg}", "with-bg")
+				.Replace("{title}", pageTitle + " - MouthlessGames") + _fragments[id] + _fragments["footer"];
 
             WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
         }
 
-        public List<BlogPost> CreateBlogPosts()
+		public List<Blogpost> CreateBlogPosts()
         {
-			var blogposts = new List<BlogPost>();
+			var blogposts = new List<Blogpost>();
             string[] blogPostPaths = Directory.GetFiles(Path.Combine(_rootDir, "fragments", "posts"));
             foreach (var blogPostPath in blogPostPaths)
             {
+				if (Path.GetFileName(blogPostPath).StartsWith(".")) continue;
+
                 string blogPost = File.ReadAllText(blogPostPath);
                 string[] lines = blogPost.Split('\n');
-                string id = ExtractFrom("id", lines[0]);
-                string title = ExtractFrom("title", lines[1]);
-                string date = ExtractFrom("date", lines[2]);
-				string description = ExtractFrom("description", lines[3]);
+              
+                string title = ExtractFrom("title", lines[0]);
+				string id = Regex.Replace(title, @"[^0-9a-zA-Z ]+", "").Replace(" ", "-").ToLower().Trim();
+				string date = ExtractFrom("date", lines[1]);
+				string topic = ExtractFrom("topic", lines[2]);
+				string image = ExtractFrom("image", lines[3]);
+				string description = ExtractFrom("description", lines[4]);
+
 				lines[0] = "";
                 lines[1] = "";
                 lines[2] = "";
 				lines[3] = "";
+				lines[4] = "";
 				string content = string.Join("", lines);
 
-				var blogpost = new BlogPost(id, title, date, description, content);
+				var blogpost = new Blogpost(id, title, date, description, topic, image, content);
 				blogposts.Add(blogpost);
 
 				var folder = Path.Combine(_rootDir, "blog", id);
                 Directory.CreateDirectory(folder);
 
                 string html = _fragments["header"]
-                                    .Replace("{customJs}", _fragments["load-comments"])
-                                    .Replace("{blogPostId}", id)
+									.Replace("{with-bg}", "with-bg")
+									.Replace("{title}", blogpost.Title + " - MouthlessGames")
+                                    .Replace("{blogPostId}", blogpost.Id)
                     + _fragments["blog-post"]
                             .Replace("{id}", blogpost.Id)
                             .Replace("{title}", blogpost.Title)
                             .Replace("{date}", blogpost.Date)
-                            .Replace("{content}", blogpost.Content)
-                    + _fragments["comments"]
-                    + _fragments["footer"];
+							.Replace("{image}", "{baseUrl}img/" + blogpost.Image)
+							.Replace("{topic}", blogpost.Topic)
+							.Replace("{content}", blogpost.Content)
+					+ _fragments["footer"];
 
                 WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
             }
@@ -157,7 +192,7 @@ namespace CreateHtmlFiles
 				}
 				else
 				{
-					Console.WriteLine("Untouched: " + path);
+					//Console.WriteLine("Untouched: " + path);
 				}
 			} else
 			{
@@ -183,7 +218,10 @@ namespace CreateHtmlFiles
                 // if the following placeholders have not been set until now,
                 // assume that we dont want to use them and simply remove them
                 .Replace("{blogPostId}", "")
-                .Replace("{customJs}", ""); 
+				.Replace("{title}", "")
+				.Replace("{with-bg}", "")
+				.Replace("{analytics}", "")
+				.Replace("{customJs}", "");
                                             
         }
     }

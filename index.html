@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	
 	<meta charset="utf-8">
-	<title>Mouthless Games</title>
+	<title>MouthlessGames - Official Website</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<meta name="robots" content="follow" />
+	<meta name="revisit-after" content="2 days" />
+	<meta name="language" content="en" />
+	<meta name="author" content="Christian DeTamble" />
+	<meta name="publisher" content="MouthlessGames" />
+	<meta name="copyright" content="MouthlessGames" />
+	<meta name="keywords" content="game, gamedev, game developer, indie game developer, austria, game development, devblog, tutorials, android, app, android studio, ludum dare, 3d game engine, libgdx, java" />
+	<meta name="description" content="MouthlessGames is an independent game developer from Austria." />
+
 	<!-- Fonts -->
-	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/fonts.css">
-	
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/modal.css">
 	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/buttons.css">
@@ -33,20 +42,19 @@
 </head>
 <body>
 
-<nav style="background-image: url('/mouthlessgames/img/bg.jpg')">
+<nav>
 	<div class="container">
-		<ul>
-
-		<li class="mdc-ripple-surface">
-			<a class="ripplelink" href="/mouthlessgames/"><img id="logo" src="/mouthlessgames/img/title3.png"></a>
-		</li>
-
+		<ul id="logo_container">
+			<li class="mdc-ripple-surface">
+				<a class="ripplelink" href="/mouthlessgames/">
+					<img id="logo" src="/mouthlessgames/img/title7.jpg">
+				</a>
+			</li>
 		</ul>
 		<div class="right-align">
 			<ul id="hmenu">
-				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/blog">Blog</a></li>
 				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/games">Games</a></li>
-				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/tutorials">Tutorials</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/blog">Blog</a></li>
 				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/about">About</a></li>
 			</ul>
 			<ul id="hamburger">
@@ -55,43 +63,59 @@
 		</div>
 
 		<ul id="vmenu">
-			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/blog">Blog</a></li>
 			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/games">Games</a></li>
-			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/tutorials">Tutorials</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/blog">Blog</a></li>
 			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/about">About</a></li>
 		</ul>
 	</div>
 </nav>
 
 <main>
-	<div class="container">
-<div class="image padding-1">
-    <img src="/mouthlessgames/img/2.jpg">
+	<div class="container with-bg">
+<div class="game-card">
+    <div class="image-overlay">
+        <img class="main-image" src="/mouthlessgames/img/beyond/title.png">
+        <img class="ranking" src="/mouthlessgames/img/beyond/ranking.png">
+        <div class="image-slider">
+            <div class="image-link"></div>
+            <div class="image-link"></div>
+            <div class="image-link"></div>
+        </div>
+    </div>
 
     <div>
-        <p>
-            <span class="hoverable">It starts with a vision.</span><br>
-            <span class="hoverable">The final destination is not yet in sight.</span><br>
-            <span class="hoverable">Instead, even multiple paths lie ahead.</span><br>
-        </p>
+        <h2 style="padding-top: 0.5rem;display: inline-block;">Beyond The Horizon</h2>
+        <img src="/mouthlessgames/img/4stars.png">
+
+        <p class="game-description">Disembodied explores one of human kind's deepest and darkest places. Disembodied has been crafted in only 3 days for the Ludum Dare 42 game development competition (August 2018) based on the theme "Running out of Space".</p>
+
+        <ul class="contact_information inset" style="padding: 0 0.5rem;margin: 0 1rem;border-radius: 8px;max-width: 50%;">
+            <li><span class="fa icon-briefcase"></span><strong>Genre</strong> <br><span class="text">Horror, Visual Novel</span></li>
+            <li><span class="fa icon-location"></span><strong>Playtime</strong> <br><span class="text">15 min</span></li>
+            <li><span class="fa icon-heart"></span><strong>Price</strong> <br><span class="text">0$</span></li>
+        </ul>
+
+        <div class="right-section">
+            <a href="#" class="btn-two green mini">Button</a>
+        </div>
+
+        <p></p>
     </div>
-</div>
 
-<p class="text-center">
-    It ends with a soul-touching result.
-</p>
-
-<p class="text-center">
-    Reaching this goal and the story behind is what <b>MouthlessGames</b> is about.
-</p>
-
-<p>
-    <img class="center" src="/mouthlessgames/img/m2.png" alt="MouthlessGames Logo">
-</p>	</div>
+</div>	</div>
 </main>
 
 <footer>
-    <p>© Copyright 2018 – 2019  <br>Website Theme by <a href="/mouthlessgames/">mouthlessgames.com</a></p>
+
+
+	<p>
+		<span>Made by © 2019 MouthlessGames</span>
+		<br>
+		<a href="/mouthlessgames/legal">Legal Notice & Privacy</a>
+	</p>
+
+	<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-follow-button twitter-follow-button-rendered" style="position: static; visibility: visible; width: 63px; height: 20px;" title="Twitter Follow Button" src="https://platform.twitter.com/widgets/follow_button.d6364fae9340b0be5f13818370141fd0.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=MouthlessGames&amp;show_count=false&amp;show_screen_name=false&amp;size=m&amp;time=1568751879251" data-screen-name="MouthlessGames"></iframe><script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 </footer>
 
 <!-- Modal -->

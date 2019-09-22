@@ -4,13 +4,17 @@
     initFancyBox();
     initMaterialRipple();
     initReadingBar();
-    initBlog();
+    initNews();
 
     //fetchNumComments();
     renderComments();
+
+    $('#home_image').click(() => {
+		window.location.href = Globals.baseUrl + 'blog';
+	})
 });
 
-function initBlog() {
+function initNews() {
     $('.blogpost-card').click((event) => {
        window.location.href = Globals.baseUrl + 'blog/' + $(event.currentTarget).attr('itemid');
     });
@@ -95,13 +99,16 @@ function initActiveMenuItem() {
 	if (subpage.endsWith("/")) {
         subpage = subpage.substr(0, subpage.length - 1);
 	}
-	$('#hmenu li a, #vmenu.li a').each((i, a) => {
+	$('#hmenu li a, #vmenu li a').each((i, a) => {
 		const pageId = $(a).text().replace(" ", "-").toLowerCase();
-		if (subpage.endsWith(pageId)) {
+		if (subpage.indexOf(pageId) !== -1) {
 			$(a).parent().addClass("active");
 			hasFoundItem = true;
 		}
 	});
+	if (!hasFoundItem) {
+		$('#hmenu li:first-child, #vmenu li:first-child').addClass("active");
+	}
 }
 
 function initButtons() {

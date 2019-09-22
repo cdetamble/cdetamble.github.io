@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	{analytics}
 	<meta charset="utf-8">
-	<title>Mouthless Games</title>
+	<title>{title}</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<meta name="robots" content="follow" />
+	<meta name="revisit-after" content="2 days" />
+	<meta name="language" content="en" />
+	<meta name="author" content="Christian DeTamble" />
+	<meta name="publisher" content="MouthlessGames" />
+	<meta name="copyright" content="MouthlessGames" />
+	<meta name="keywords" content="game, gamedev, game developer, indie game developer, austria, game development, devblog, tutorials, android, app, android studio, ludum dare, 3d game engine, libgdx, java" />
+	<meta name="description" content="MouthlessGames is an independent game developer from Austria." />
+
 	<!-- Fonts -->
-	<link rel="stylesheet" type="text/css" href="{baseUrl}css/fonts.css">
-	
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="{baseUrl}css/modal.css">
 	<link rel="stylesheet" type="text/css" href="{baseUrl}css/buttons.css">
@@ -33,20 +42,19 @@
 </head>
 <body>
 
-<nav style="background-image: url('{baseUrl}img/bg.jpg')">
+<nav>
 	<div class="container">
-		<ul>
-
-		<li class="mdc-ripple-surface">
-			<a class="ripplelink" href="{baseUrl}"><img id="logo" src="{baseUrl}img/title3.png"></a>
-		</li>
-
+		<ul id="logo_container">
+			<li class="mdc-ripple-surface">
+				<a class="ripplelink" href="{baseUrl}">
+					<img id="logo" src="{baseUrl}img/title7.jpg">
+				</a>
+			</li>
 		</ul>
 		<div class="right-align">
 			<ul id="hmenu">
-				<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}blog">Blog</a></li>
 				<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}games">Games</a></li>
-				<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}tutorials">Tutorials</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}blog">Blog</a></li>
 				<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}about">About</a></li>
 			</ul>
 			<ul id="hamburger">
@@ -55,13 +63,12 @@
 		</div>
 
 		<ul id="vmenu">
-			<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}blog">Blog</a></li>
 			<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}games">Games</a></li>
-			<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}tutorials">Tutorials</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}blog">Blog</a></li>
 			<li class="mdc-ripple-surface"><a class="ripplelink" href="{baseUrl}about">About</a></li>
 		</ul>
 	</div>
 </nav>
 
 <main>
-	<div class="container">
+	<div class="container {with-bg}">
