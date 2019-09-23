@@ -756,8 +756,8 @@ ul.undecorated li {
 	bottom: 1rem;
 }
 .image-slider .image-link {
-	width: 20px;
-	height: 15px;
+	width: 3rem;
+	height: 2rem;
 	background: #8c8c8cad;
 	border-radius: 3px;
 	display: inline-block;
@@ -767,12 +767,15 @@ ul.undecorated li {
 	-moz-transition: all 0.15s ease;
 	-o-transition: all 0.15s ease;
 	cursor: pointer;
+	box-shadow: 0 0 2px 2px hsla(0, 0%, 55%, 0.5);
+	background-size: cover;
 }
 .image-slider .image-link:hover {
-	background: white;
+	opacity: 0.75;
 }
-.game-description {
+.game-card .game-description {
 	margin-bottom: 0.5rem;
+	max-width: 27rem;
 }
 .game-card .right-section {
 	position: absolute;
@@ -786,8 +789,27 @@ ul.undecorated li {
 	top: 0; left: 0; bottom: 0; right: 0;
 	background: radial-gradient(circle, transparent 50%, black 150%);
 }
-
-
+.game-card .contact_information {
+	padding: 0 0.5rem;
+	margin: 0 1rem;
+	border-radius: 8px;
+	width: 11rem;
+	position: absolute;
+	right: 0;
+	top: 1rem;
+}
+.game-card .download-button {
+	font-size: 15px !important;
+	border-radius: 4px;
+}
+.game-card .text-section {
+	position: relative;
+}
+.game-card .name {
+	position: absolute;
+	left: 0;
+	top: 1rem;
+}
 
 
 
