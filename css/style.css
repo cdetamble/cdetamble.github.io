@@ -525,9 +525,9 @@ ul.contact_information > li span.fa {
     display: block;
     float: left;
     margin-right: 5px;
-    line-height: 26px;
     color: rgb(111, 111, 111);
     text-align: center;
+	line-height: 27px;
 }
 
 ul.contact_information > li strong {

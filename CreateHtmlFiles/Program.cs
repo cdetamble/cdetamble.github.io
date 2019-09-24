@@ -15,7 +15,7 @@ namespace CreateHtmlFiles
             builder.CreateGeneric("about", "About");
 			builder.CreateGeneric("legal", "Legal");
 
-			var gamesHtml = builder.CreateGames();
+			builder.CreateGames();
 			//builder.CreateTutorials();
 
 			var blogposts = builder.CreateBlogPosts();
@@ -77,7 +77,7 @@ namespace CreateHtmlFiles
             WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
         }
 
-        public string CreateGames()
+        public void CreateGames()
         {
             var folder = Path.Combine(_rootDir, "games");
             Directory.CreateDirectory(folder);
@@ -89,7 +89,6 @@ namespace CreateHtmlFiles
 
             WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
 
-			return gamesHtml;
 		}
 
 		public string CreateBlog(List<Blogpost> blogposts)
