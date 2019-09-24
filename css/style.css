@@ -741,25 +741,53 @@ ul.undecorated li {
 	width: 100%;
 	border-top-right-radius: 8px;
 	border-top-left-radius: 8px;
+	height: 22rem;
 }
 .game-card .image-overlay {
 	position: relative;
+	background: black;
 }
 .game-card .ranking {
 	position: absolute;
 	left: 1rem;
 	bottom: 1.5rem;
+	color: #bbb;
+	text-align: center;
+	opacity: 0.9;
 }
+
+.ranking .text {
+	display: inline-block;
+	vertical-align: super;
+}
+
+.ranking .subtitle {
+	font-size: 11px;
+}
+
+.left-accolade {
+	display: inline-block;
+	vertical-align: bottom;
+	margin-right: -5px;
+}
+.right-accolade {
+	display: inline-block;
+	vertical-align: bottom;
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	margin-left: -5px;
+}
+
 .game-card .image-slider {
 	position: absolute;
 	right: 1rem;
 	bottom: 1rem;
 }
 .image-slider .image-link {
-	width: 3rem;
-	height: 2rem;
+	width: 2rem;
+	height: 1.2rem;
 	background: #8c8c8cad;
-	border-radius: 3px;
+	border-radius: 1px;
 	display: inline-block;
 	margin-left: 3px;
 	transition: all 0.15s ease;
@@ -767,8 +795,8 @@ ul.undecorated li {
 	-moz-transition: all 0.15s ease;
 	-o-transition: all 0.15s ease;
 	cursor: pointer;
-	box-shadow: 0 0 2px 2px hsla(0, 0%, 55%, 0.5);
 	background-size: cover;
+	border: 1px solid #4c4c4c;
 }
 .image-slider .image-link:hover {
 	opacity: 0.75;
@@ -776,11 +804,17 @@ ul.undecorated li {
 .game-card .game-description {
 	margin-bottom: 0.5rem;
 	max-width: 27rem;
+	padding-left: 1.5rem;
+	padding-top: 1rem;
 }
 .game-card .right-section {
 	position: absolute;
-	bottom: 1rem;
-	right: 1rem;
+	bottom: 1.5rem;
+	right: 1.5rem;
+}
+.game-card .game-name {
+	padding-top: 0.5rem;
+	padding-left: 1.5rem;
 }
 
 .vignette-radial:after {
@@ -795,8 +829,8 @@ ul.undecorated li {
 	border-radius: 8px;
 	width: 11rem;
 	position: absolute;
-	right: 0;
-	top: 1rem;
+	right: 0.5rem;
+	top: 1.5rem;
 }
 .game-card .download-button {
 	font-size: 15px !important;
@@ -804,6 +838,7 @@ ul.undecorated li {
 }
 .game-card .text-section {
 	position: relative;
+	padding-top: 0.5rem;
 }
 .game-card .name {
 	position: absolute;

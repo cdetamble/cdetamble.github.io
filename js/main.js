@@ -5,6 +5,7 @@
     initMaterialRipple();
     initReadingBar();
     initNews();
+    initImageLinks();
 
     //fetchNumComments();
     renderComments();
@@ -13,6 +14,17 @@
 		window.location.href = Globals.baseUrl + 'blog';
 	})
 });
+
+function initImageLinks() {
+	$('.image-link').click((event) => {
+		const $this = $(event.target);
+		const $mainImage = $this.parents('.image-overlay').find('.main-image');
+		$mainImage.fadeOut('fast', () => {
+			$mainImage.attr('src', $this.attr('data-image-url'));
+			$mainImage.fadeIn('fast');
+		});
+	});
+}
 
 function initNews() {
     $('.blogpost-card').click((event) => {
