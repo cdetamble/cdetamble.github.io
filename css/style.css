@@ -29,10 +29,17 @@ a {
    text-shadow: 2px 2px 4px #000000cf;
    transition: all 0.35s ease;	
 }
+
+a:before {
+	content: '⮎';
+	font-weight: bold;
+	font-size: 11px;
+	color: #757575;
+	padding-right: 4px;
+}
 	
 a:hover {
-  color: white;
-  text-decoration: none;
+  color: white !important;
 }
 
 a:focus {
@@ -45,12 +52,9 @@ a:focus {
 
 main {
 	color: white;
-
-    top: 50%;
-    position: absolute;
-    transform: translateX(-50%) translateY(-50%);
-    left: 50%;
-    max-width: 35em
+    max-width: 35em;
+	margin: 0 auto;
+	padding: 1rem;
 }
 
 .circle-hover {
