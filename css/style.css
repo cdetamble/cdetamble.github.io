@@ -162,6 +162,18 @@ a:hover {
 	text-decoration: underline;
 }
 
+a span {
+	text-decoration: none;
+	color: #444;
+	transition: all 0.15s ease;
+	-webkit-transition: all 0.15s ease;
+}
+
+a:hover span {
+	text-decoration: none;
+	opacity: 0.75;
+}
+
 hr {
 	padding: 0;
     margin: 1rem;
@@ -745,24 +757,29 @@ ul.undecorated li {
 }
 .game-card .image-overlay {
 	position: relative;
-	background: black;
+	height: 22rem;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
 }
 .game-card .ranking {
 	position: absolute;
-	left: 1rem;
-	bottom: 1.5rem;
+	left: 5px;
+	bottom: 5px;
 	color: #bbb;
 	text-align: center;
 	opacity: 0.9;
+	transition: all 0.15s ease;
 }
-
 .ranking .text {
 	display: inline-block;
 	vertical-align: super;
 }
-
 .ranking .subtitle {
 	font-size: 11px;
+}
+.ranking:hover {
+	opacity: 0.5;
+	cursor: pointer;
 }
 
 .left-accolade {
@@ -780,26 +797,34 @@ ul.undecorated li {
 
 .game-card .image-slider {
 	position: absolute;
-	right: 1rem;
-	bottom: 1rem;
+	right: 5px;
+	bottom: 5px;
 }
-.image-slider .image-link {
-	width: 2rem;
-	height: 1.2rem;
-	background: #8c8c8cad;
+.image-slider img {
+	height: 2rem;
 	border-radius: 1px;
 	display: inline-block;
-	margin-left: 3px;
+	margin-left: 5px;
 	transition: all 0.15s ease;
 	-webkit-transition: all 0.15s ease;
 	-moz-transition: all 0.15s ease;
 	-o-transition: all 0.15s ease;
 	cursor: pointer;
 	background-size: cover;
+	vertical-align: bottom;
+}
+.image-slider .fancybox img {
+	background: #8c8c8cad;
 	border: 1px solid #4c4c4c;
 }
-.image-slider .image-link:hover {
+.image-slider img:hover {
 	opacity: 0.75;
+}
+.game-card .preview-video {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
 }
 .game-card .game-description {
 	margin-bottom: 0.5rem;
@@ -845,7 +870,18 @@ ul.undecorated li {
 	left: 0;
 	top: 1rem;
 }
-
+.next-game {
+	position: absolute;
+	right: -3rem;
+	top: 50%;
+	font-size: 32px;
+}
+.previous-game {
+	position: absolute;
+	left: -3.5rem;
+	top: 50%;
+	font-size: 32px;
+}
 
 
 

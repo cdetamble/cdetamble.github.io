@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace CreateHtmlFiles
 {
@@ -15,12 +17,12 @@ namespace CreateHtmlFiles
             builder.CreateGeneric("about", "About");
 			builder.CreateGeneric("legal", "Legal");
 
-			builder.CreateGames();
+			var firstGameHtml = builder.CreateGames();
 			//builder.CreateTutorials();
 
 			var blogposts = builder.CreateBlogPosts();
 			var blogHtml = builder.CreateBlog(blogposts);
-			builder.CreateIndex(gamesHtml);
+			builder.CreateIndex(firstGameHtml);
 			//Console.ReadLine();
 		}
     }
@@ -31,7 +33,7 @@ namespace CreateHtmlFiles
         private readonly string _baseUrl;
         private readonly Dictionary<string, string> _fragments = new Dictionary<string, string>();
 
-        public Builder(string baseUrl, bool withGoogleAnalytics)
+		public Builder(string baseUrl, bool withGoogleAnalytics)
         {
             this._baseUrl = baseUrl;
 
@@ -59,12 +61,13 @@ namespace CreateHtmlFiles
 
         public void CreateIndex(string html)
         {
-            WriteAllText(Path.Combine(_rootDir, "index.html"),
-                ResolvePlaceholders(_fragments["header"]
-					.Replace("{with-bg}", "with-bg")
+			var html2 = ResolvePlaceholders(_fragments["header"]
 					.Replace("{title}", "MouthlessGames - Official Website")
-						+ html + _fragments["footer"]));
-        }
+						+ html + _fragments["footer"]);
+
+			WriteAllText(Path.Combine(_rootDir, "index.html"), html2);
+			WriteAllText(Path.Combine(_rootDir, "games", "index.html"), html2);
+		}
 
         public void CreateTutorials()
         {
@@ -77,18 +80,109 @@ namespace CreateHtmlFiles
             WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
         }
 
-        public void CreateGames()
+        public string CreateGames()
         {
-            var folder = Path.Combine(_rootDir, "games");
-            Directory.CreateDirectory(folder);
+			string firstGameHtml = null;
+			var folder = Path.Combine(_rootDir, "games");
+			Directory.CreateDirectory(folder);
 
-			string gamesHtml = _fragments["games"];
+			var games = new List<Dictionary<string, string>>();
 
-			string html = _fragments["header"]
-						.Replace("{title}", "Games - MouthlessGames") + gamesHtml + _fragments["footer"];
+			string[] gamePaths = Directory.GetFiles(Path.Combine(_rootDir, "fragments", "games"));
+			foreach (var gamePath in gamePaths)
+			{
+				if (Path.GetFileName(gamePath).StartsWith(".")) continue;
 
-            WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
+				string gameString = File.ReadAllText(gamePath);
+				string[] lines = gameString.Split('\n');
 
+				var game = new Dictionary<string, string>();
+				foreach (var line in lines)
+				{
+					if (line.Trim().Length == 0 || !(line.Trim().StartsWith("{") && line.Trim().EndsWith("}")))
+					{
+						continue;
+					}
+
+					var key = line.Substring(1, line.IndexOf(" ")).Trim();
+					game.Add(key, ExtractFrom(key, line));
+				}
+				game.Add("name", FromBrowsableString(Path.GetFileNameWithoutExtension(gamePath)));
+				games.Add(game);
+			}
+
+			foreach (var game in games)
+			{
+				var browsableGameName = ToBrowsableString(game["name"]);
+				var gameFolder = Path.Combine(_rootDir, "games", browsableGameName);
+				Directory.CreateDirectory(gameFolder);
+
+				var gameHtml = _fragments["game"];
+				foreach (var key in game.Keys)
+				{				
+					gameHtml = gameHtml.Replace("{" + key + "}", game[key].Replace("{baseUrl}", _baseUrl));
+				}
+
+				string[] previews = Directory.GetFiles(Path.Combine(_rootDir, "img", browsableGameName, "previews"));
+				var previewsHtml = new StringBuilder();
+				string mainImage = null;
+				foreach (var preview in previews)
+				{
+					var imageName = Path.GetFileName(preview);
+					var imageUrl = _baseUrl + "img/" + browsableGameName + "/previews/" + imageName;
+					if (mainImage == null) mainImage = imageUrl;
+					var thumbnailUrl = _baseUrl + "img/" + browsableGameName + "/previews/thumbnails/" + Path.GetFileNameWithoutExtension(preview) + ".png";
+					previewsHtml.Append($"<a href=\"{imageUrl}\" class=\"fancybox\" rel=\"gallery\">" +
+						$"<img src=\"{thumbnailUrl}\"></a>");
+				}
+
+				if (game.ContainsKey("video-url"))
+				{
+					var videoHtml = $"<a class=\"fancybox-media\" href=\"{ game["video-url"] }\">" +
+						$"<img src=\"{_baseUrl}img/youtube.png\"></a>";
+					gameHtml = gameHtml.Replace("{video}", videoHtml);
+				}
+
+				if (game.ContainsKey("ldjam-url"))
+				{
+					gameHtml = gameHtml.Replace("{ldjam-url}", game["ldjam-url"]);
+				}
+
+				if (game.ContainsKey("stars"))
+				{
+					var starsHtml = $"<img src=\"{ _baseUrl }img/stars/{ game["stars"] }stars.png\" alt=\"Ranked with { game["stars"] } Stars on Google Play\">";
+					gameHtml = gameHtml.Replace("{stars}", starsHtml);
+				}
+
+				if (games.IndexOf(game) > 0)
+				{
+					gameHtml = gameHtml.Replace("{previous-game}",
+						$"<a href=\"{_baseUrl + "games/" + ToBrowsableString(games[games.IndexOf(game) - 1]["name"]) }\" class=\"previous-game\">" +
+						$"<span class=\"fa icon-circle-left\"></span></a>");
+				}
+				if (games.IndexOf(game) < games.Count - 1)
+				{
+					gameHtml = gameHtml.Replace("{next-game}",
+						$"<a href=\"{_baseUrl + "games/" + ToBrowsableString(games[games.IndexOf(game) + 1]["name"])}\" class=\"next-game\">" +
+						 $"<span class=\"fa icon-circle-right\"></span></a>");
+				}
+
+				gameHtml = gameHtml
+					.Replace("{previews}", previewsHtml.ToString())
+					.Replace("{main-image}", mainImage)
+					.Replace("{name-image}", _baseUrl + "img/" + browsableGameName + "/name.png");
+
+				gameHtml = gameHtml.Replace("{baseUrl}", _baseUrl);
+				if (firstGameHtml == null)
+				{
+					firstGameHtml = gameHtml;
+				}
+
+				string html = _fragments["header"].Replace("{title}", game["name"] + " - MouthlessGames") + gameHtml + _fragments["footer"];
+				WriteAllText(Path.Combine(gameFolder, "index.html"), ResolvePlaceholders(html));
+			}
+
+			return firstGameHtml;
 		}
 
 		public string CreateBlog(List<Blogpost> blogposts)
@@ -141,7 +235,7 @@ namespace CreateHtmlFiles
                 string[] lines = blogPost.Split('\n');
               
                 string title = ExtractFrom("title", lines[0]);
-				string id = Regex.Replace(title, @"[^0-9a-zA-Z ]+", "").Replace(" ", "-").ToLower().Trim();
+				string id = ToBrowsableString(title);
 				string date = ExtractFrom("date", lines[1]);
 				string topic = ExtractFrom("topic", lines[2]);
 				string image = ExtractFrom("image", lines[3]);
@@ -179,6 +273,19 @@ namespace CreateHtmlFiles
 			return blogposts;
 		}
 
+		private string ToBrowsableString(string title)
+		{
+			return Regex.Replace(title, @"[^0-9a-zA-Z ]+", "").Replace(" ", "-").ToLower().Trim();
+		}
+
+		private string FromBrowsableString(string title)
+		{
+			CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+			TextInfo textInfo = cultureInfo.TextInfo;
+
+			return textInfo.ToTitleCase(title.Replace("-", " "));
+		}
+
 		private void WriteAllText(string path, string text)
 		{
 			if (File.Exists(path))
@@ -202,12 +309,10 @@ namespace CreateHtmlFiles
 
 		private string ExtractFrom(string property, string line)
         {
-            return line
-                .Replace("{", "")
-                .Replace("}", "")
-                .Replace(property, "")
-                .Trim();
-        }
+            var result = line.Substring(2 + property.Length).Trim();
+			return result.Substring(0, result.Length - 1);
+
+		}
 
         private string ResolvePlaceholders(string text)
         {
@@ -216,6 +321,8 @@ namespace CreateHtmlFiles
 
                 // if the following placeholders have not been set until now,
                 // assume that we dont want to use them and simply remove them
+                .Replace("{previous-game}", "")
+                .Replace("{next-game}", "")
                 .Replace("{blogPostId}", "")
 				.Replace("{title}", "")
 				.Replace("{with-bg}", "")
