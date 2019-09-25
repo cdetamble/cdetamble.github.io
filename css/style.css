@@ -71,3 +71,10 @@ ul {
 	font-size: 13.333333px;
 	color: hsla(0, 0%, 63%, 1);
 }
+
+ul li {
+	padding: 10px 0;
+}
+ul li a {
+	padding: 10px 0;
+}
