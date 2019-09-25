@@ -45,7 +45,7 @@ a:focus {
 
 main {
 	color: white;
-    text-align: center;
+
     top: 50%;
     position: absolute;
     transform: translateX(-50%) translateY(-50%);
@@ -61,4 +61,9 @@ main {
 
 img.circle-hover:hover {
   border-radius: 0 !important;
+}
+
+ul {
+	font-size: 13.333333px;
+	color: hsla(0, 0%, 63%, 1);
 }
