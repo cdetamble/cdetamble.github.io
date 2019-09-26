@@ -1,7 +1,8 @@
 <div class="game-card">
     <div class="image-overlay">
-        <img class="main-image" src="{main-image}">
-        <img class="name" src="{name-image}">
+
+        <div class="main-image vignette" style="background-image: url('{main-image}')"></div>
+        <!--<img class="name" src="{name-image}">-->
 
         <!-- Awards -->
         <a href="{ldjam-url}">
@@ -25,24 +26,25 @@
 
     <div class="text-section">
         <h2 class="game-name" style="padding-top: 0.5rem;display: inline-block;">{name}</h2>
-        {stars}
+        {num-stars}
 
         <p class="game-description">{description}</p>
 
-        <ul class="contact_information outset">
-            <li><span class="fa icon-dice"></span><strong>Genre</strong> <br><span class="text">{genre}</span></li>
-            <li><span class="fa icon-stopwatch"></span><strong>Playtime</strong> <br><span class="text">{playtime}</span></li>
-            <li><span class="fa icon-android"></span><strong>Platform</strong> <br><span class="text">{platforms}</span></li>
-        </ul>
-
         <div class="right-section">
-            <a href="{google-play-url}" class="btn-two green mini download-button">Get it on <b>Google Play</b></a>
+            <ul class="contact_information outset">
+                <li><span class="fa icon-dice"></span><strong>Genre</strong> <br><span class="text">{genre}</span></li>
+                <li><span class="fa icon-stopwatch"></span><strong>Playtime</strong> <br><span class="text">{playtime}</span></li>
+            </ul>
+
+            <p class="play-button">
+                <a href="{google-play-url}">
+                    <img src="{baseUrl}img/play.png">
+                </a>
+            </p>
+
         </div>
 
         <p></p>
     </div>
 
 </div>
-
-{previous-game}
-{next-game}

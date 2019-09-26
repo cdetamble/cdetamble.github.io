@@ -6,6 +6,7 @@
     initReadingBar();
     initNews();
     initImageLinks();
+    initGameCards();
 
     //fetchNumComments();
     renderComments();
@@ -14,6 +15,13 @@
 		window.location.href = Globals.baseUrl + 'blog';
 	})
 });
+
+function initGameCards() {
+	$('.main-image').click((event) => {
+		console.log($(event.target).parents('.image-overlay'));
+		$(event.target).parents('.image-overlay').find('.image-slider a.fancybox').first().click();
+	});
+}
 
 function initImageLinks() {
 	$('.image-link').click((event) => {

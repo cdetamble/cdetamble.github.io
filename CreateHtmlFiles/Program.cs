@@ -17,12 +17,12 @@ namespace CreateHtmlFiles
             builder.CreateGeneric("about", "About");
 			builder.CreateGeneric("legal", "Legal");
 
-			var firstGameHtml = builder.CreateGames();
+			var gamesHtml = builder.CreateGames();
 			//builder.CreateTutorials();
 
 			var blogposts = builder.CreateBlogPosts();
 			var blogHtml = builder.CreateBlog(blogposts);
-			builder.CreateIndex(firstGameHtml);
+			builder.CreateIndex(gamesHtml);
 			//Console.ReadLine();
 		}
     }
@@ -82,9 +82,9 @@ namespace CreateHtmlFiles
 
         public string CreateGames()
         {
-			string firstGameHtml = null;
 			var folder = Path.Combine(_rootDir, "games");
 			Directory.CreateDirectory(folder);
+			string html = "";
 
 			var games = new List<Dictionary<string, string>>();
 
@@ -114,12 +114,10 @@ namespace CreateHtmlFiles
 			foreach (var game in games)
 			{
 				var browsableGameName = ToBrowsableString(game["name"]);
-				var gameFolder = Path.Combine(_rootDir, "games", browsableGameName);
-				Directory.CreateDirectory(gameFolder);
 
 				var gameHtml = _fragments["game"];
 				foreach (var key in game.Keys)
-				{				
+				{
 					gameHtml = gameHtml.Replace("{" + key + "}", game[key].Replace("{baseUrl}", _baseUrl));
 				}
 
@@ -132,13 +130,13 @@ namespace CreateHtmlFiles
 					var imageUrl = _baseUrl + "img/" + browsableGameName + "/previews/" + imageName;
 					if (mainImage == null) mainImage = imageUrl;
 					var thumbnailUrl = _baseUrl + "img/" + browsableGameName + "/previews/thumbnails/" + Path.GetFileNameWithoutExtension(preview) + ".png";
-					previewsHtml.Append($"<a href=\"{imageUrl}\" class=\"fancybox\" rel=\"gallery\">" +
+					previewsHtml.Append($"<a href=\"{imageUrl}\" class=\"fancybox\" rel=\"gallery-{ browsableGameName }\">" +
 						$"<img src=\"{thumbnailUrl}\"></a>");
 				}
 
 				if (game.ContainsKey("video-url"))
 				{
-					var videoHtml = $"<a class=\"fancybox-media\" href=\"{ game["video-url"] }\">" +
+					var videoHtml = $"<a class=\"fancybox-media\" href=\"{ game["video-url"] }\" rel=\"gallery-{ browsableGameName }\">" +
 						$"<img src=\"{_baseUrl}img/youtube.png\"></a>";
 					gameHtml = gameHtml.Replace("{video}", videoHtml);
 				}
@@ -150,21 +148,15 @@ namespace CreateHtmlFiles
 
 				if (game.ContainsKey("stars"))
 				{
-					var starsHtml = $"<img src=\"{ _baseUrl }img/stars/{ game["stars"] }stars.png\" alt=\"Ranked with { game["stars"] } Stars on Google Play\">";
-					gameHtml = gameHtml.Replace("{stars}", starsHtml);
-				}
-
-				if (games.IndexOf(game) > 0)
-				{
-					gameHtml = gameHtml.Replace("{previous-game}",
-						$"<a href=\"{_baseUrl + "games/" + ToBrowsableString(games[games.IndexOf(game) - 1]["name"]) }\" class=\"previous-game\">" +
-						$"<span class=\"fa icon-circle-left\"></span></a>");
-				}
-				if (games.IndexOf(game) < games.Count - 1)
-				{
-					gameHtml = gameHtml.Replace("{next-game}",
-						$"<a href=\"{_baseUrl + "games/" + ToBrowsableString(games[games.IndexOf(game) + 1]["name"])}\" class=\"next-game\">" +
-						 $"<span class=\"fa icon-circle-right\"></span></a>");
+					if (game["stars"] == "0")
+					{
+						gameHtml = gameHtml.Replace("{num-stars}", "");
+					}
+					else
+					{
+						var starsHtml = $"<img class=\"stars\" src=\"{ _baseUrl }img/stars/{ game["stars"] }stars.png\" title=\"Ranked with { game["stars"] } Stars on Google Play\">";
+						gameHtml = gameHtml.Replace("{num-stars}", starsHtml);
+					}
 				}
 
 				gameHtml = gameHtml
@@ -173,16 +165,14 @@ namespace CreateHtmlFiles
 					.Replace("{name-image}", _baseUrl + "img/" + browsableGameName + "/name.png");
 
 				gameHtml = gameHtml.Replace("{baseUrl}", _baseUrl);
-				if (firstGameHtml == null)
-				{
-					firstGameHtml = gameHtml;
-				}
 
-				string html = _fragments["header"].Replace("{title}", game["name"] + " - MouthlessGames") + gameHtml + _fragments["footer"];
-				WriteAllText(Path.Combine(gameFolder, "index.html"), ResolvePlaceholders(html));
+				html += gameHtml;
 			}
 
-			return firstGameHtml;
+			var gamesHtml = _fragments["header"].Replace("{title}", "Games - MouthlessGames") + html + _fragments["footer"];
+			WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(gamesHtml));
+
+			return html;
 		}
 
 		public string CreateBlog(List<Blogpost> blogposts)

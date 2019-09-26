@@ -87,7 +87,7 @@ main .container img {
 }
 
 .container {
-	max-width: 40rem;
+	max-width: 42rem;
 	margin: auto;
 	position: relative;
 	height: 100%;
@@ -109,7 +109,7 @@ footer {
 	padding: 1rem;
 	text-align: center;
 	font-size: 0.75rem;
-	max-width: 40rem;
+	max-width: 42rem;
 	margin: 0 auto;
 }
 
@@ -311,6 +311,12 @@ form input[type=submit]:hover,
 	.blogpost-card {
 		width: calc(50% - 1.2rem);
 		display: inline-block;
+	}
+	.right-section {
+		position: absolute;
+	}
+	.game-card .game-description {
+		max-width: 27rem;
 	}
 }
 
@@ -515,7 +521,9 @@ div.image div p {
 
 ul.contact_information {
     list-style-type: none;
-    padding-left: 0;
+	border-radius: 8px;
+	padding: 0 0.5rem;
+	font-size: 13px;
 }
 
 ul.contact_information > li:not(:last-child) {
@@ -730,19 +738,8 @@ ul.undecorated li {
 	padding: 0;
 	margin: 0;
 }
-.vignette {
-	position: relative;
-}
-.vignette img:after {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	box-shadow: inset 0 0 150px 60px rgba(0,0,0,0.8);
-}
 .game-card {
+	max-width: 33rem;
 	border-radius: 8px;
 	margin-top: 2rem;
 	background: white;
@@ -753,13 +750,16 @@ ul.undecorated li {
 	width: 100%;
 	border-top-right-radius: 8px;
 	border-top-left-radius: 8px;
-	height: 22rem;
+	height: 100%;
+	cursor: pointer;
+	background-size: cover;
+	background-position: center;
 }
 .game-card .image-overlay {
 	position: relative;
-	height: 22rem;
 	border-top-right-radius: 8px;
 	border-top-left-radius: 8px;
+	height: 10rem;
 }
 .game-card .ranking {
 	position: absolute;
@@ -772,10 +772,8 @@ ul.undecorated li {
 }
 .ranking .text {
 	display: inline-block;
-	vertical-align: super;
-}
-.ranking .subtitle {
-	font-size: 11px;
+	vertical-align: text-bottom;
+	font-size: 12px;
 }
 .ranking:hover {
 	opacity: 0.5;
@@ -785,14 +783,14 @@ ul.undecorated li {
 .left-accolade {
 	display: inline-block;
 	vertical-align: bottom;
-	margin-right: -5px;
+	margin-right: -8px;
 }
 .right-accolade {
 	display: inline-block;
 	vertical-align: bottom;
 	-webkit-transform: scaleX(-1);
 	transform: scaleX(-1);
-	margin-left: -5px;
+	margin-left: -8px;
 }
 
 .game-card .image-slider {
@@ -827,33 +825,21 @@ ul.undecorated li {
 	transform: translateX(-50%) translateY(-50%);
 }
 .game-card .game-description {
-	margin-bottom: 0.5rem;
-	max-width: 27rem;
+	margin-bottom: 1rem;
 	padding-left: 1.5rem;
 	padding-top: 1rem;
-}
-.game-card .right-section {
-	position: absolute;
-	bottom: 1.5rem;
-	right: 1.5rem;
+	font-size: 13px;
 }
 .game-card .game-name {
 	padding-top: 0.5rem;
 	padding-left: 1.5rem;
 }
 
-.vignette-radial:after {
-	content: '';
-	position: absolute;
-	top: 0; left: 0; bottom: 0; right: 0;
-	background: radial-gradient(circle, transparent 50%, black 150%);
+.vignette {
+	box-shadow: inset 0 0 3em 2em #000;
 }
-.game-card .contact_information {
-	padding: 0 0.5rem;
+.game-card .right-section {
 	margin: 0 1rem;
-	border-radius: 8px;
-	width: 11rem;
-	position: absolute;
 	right: 0.5rem;
 	top: 1.5rem;
 }
@@ -870,19 +856,17 @@ ul.undecorated li {
 	left: 0;
 	top: 1rem;
 }
-.next-game {
-	position: absolute;
-	right: -3rem;
-	top: 50%;
-	font-size: 32px;
+.game-card .play-button {
+	margin-top: 10px;
+	transition: all 0.15s ease;
+	-webkit-transition: all 0.15s ease;
 }
-.previous-game {
-	position: absolute;
-	left: -3.5rem;
-	top: 50%;
-	font-size: 32px;
+.game-card .play-button:hover {
+	opacity: 0.75;
 }
-
+.game-card .stars {
+	padding: 0 1.5rem;
+}
 
 
 
