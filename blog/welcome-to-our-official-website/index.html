@@ -1,142 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	
-	<meta charset="utf-8">
-	<title>Welcome to our official website! - MouthlessGames</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!-- Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
-
-	<!-- Styles -->
-	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/modal.css">
-	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/buttons.css">
-	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/icomoon.css">
-	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/style.css">
-	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/ripple.css">
-
-	<!-- Favicon -->
-	<link rel="icon" type="image/ico" href="/mouthlessgames/favicon.ico">
-
-	<!-- Fancybox -->
-	<link rel="stylesheet" href="/mouthlessgames/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="/mouthlessgames/fancybox/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen"/>
-
-	<script>
-		var Globals = {};
-		Globals.baseUrl = "/mouthlessgames/";
-		Globals.databaseUrl = "http://localhost/therefactory/api/mouthlessgames/";
-		Globals.blogPostId = "welcome-to-our-official-website";
-		
-	</script>
-</head>
-<body>
-
-<nav>
-	<div class="container">
-		<ul id="logo_container">
-			<li class="mdc-ripple-surface">
-				<a class="ripplelink" href="/mouthlessgames/">
-					<img id="logo" src="/mouthlessgames/img/title7.jpg">
-				</a>
-			</li>
-		</ul>
-		<div class="right-align">
-			<ul id="hmenu">
-				<!--<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/">Home</a></li>-->
-				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/blog">Blog</a></li>
-				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/about">About</a></li>
-			</ul>
-			<ul id="hamburger">
-				<li id="toggle_vmenu" class="mdc-ripple-surface"><a class="ripplelink" href="#"><span class="fa icon-bars"></span></a></li>
-			</ul>
-		</div>
-
-		<ul id="vmenu">
-			<!--<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/">Home</a></li>-->
-			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/blog">Blog</a></li>
-			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/about">About</a></li>
-		</ul>
-	</div>
-</nav>
-
-<main>
-	<div class="container with-bg">
-<div class="image-container fixed">
-	<div class="topic">News</div>
-	<div class="image" style="background-image: url('/mouthlessgames/img/side.jpg')"></div>
-</div>
-<article itemid="welcome-to-our-official-website" class="blogpost">
-	<h1 class="title">Welcome to our official website!</h1>
-	<p class="date">September 16, 2019 <span class="fa icon-bubbles"></span> <span class="disqus-comment-count" data-disqus-identifier="welcome-to-our-official-website"></span></p>
-	<p>    Finally, after weeks of hard work in our spare-time, the website's theme it is finally ready to go live.    Here you will be informed about our on-going projects and be able to peek a bit behind the scenes.    <b>MouthlessGames</b> was founded in 2018, as a successor to <a href="http://therefactory.bplaced.net">The Refactory</a>.    Our game development journey started all the way back in August 2016, when we released our first Android app    <a href="http://therefactory.bplaced.net/software/#83d15f35-decf-4ebd-b880-e5edad783031">Jewel Thief</a>.    Since then, we are regular participants in the Ludum Dare game development competition.    Our motivation to do so is not only because it makes a ton of fun, but it is also always incredible how much one    learns about one's weaknesses and strengths when it comes to game making.</p><p>    <a href="/mouthlessgames/img/DSC09791.JPG" class="fancybox" rel="gallery" title="Test">        <img src="/mouthlessgames/img/DSC09791.JPG">    </a></p>
-	<div id="disqus_thread"></div>
-
-	<script>
-
-		/**
-		 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-		 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-
-        var disqus_config = function () {
-        //this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = welcome-to-our-official-website; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-
-		(function() { // DON'T EDIT BELOW THIS LINE
-			var d = document, s = d.createElement('script');
-			s.src = 'https://mouthlessgames.disqus.com/embed.js';
-			s.setAttribute('data-timestamp', +new Date());
-			(d.head || d.body).appendChild(s);
-		})();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-</article>
-
-	</div>
-</main>
-
-<footer>
-    <p>© Copyright 2018 – 2019  <br>Website Theme by <a href="/mouthlessgames/">mouthlessgames.com</a></p>
-</footer>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-		
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 id="modal-title" class="modal-title">Error</h4>
-			</div>
-			<div class="modal-body">
-				<p id="modal-message">Something went wrong.</p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	
-	</div>
-</div>
-
-<!-- Reading Bar -->
-<div id="readingbar">
-    <div id="readingbar-progress"></div>
-</div>
-
-<script src="/mouthlessgames/js/jquery-1.12.4.min.js"></script>
-<script src="/mouthlessgames/js/bootstrap.min.js"></script>
-<script src="/mouthlessgames/js/main.js"></script>
-
-<!-- Fancybox -->
-<script type="text/javascript" src="/mouthlessgames/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript" src="/mouthlessgames/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
-<script type="text/javascript" src="/mouthlessgames/fancybox/helpers/jquery.fancybox-media.js"></script>
-<script type="text/javascript" src="/mouthlessgames/js/mdc.ripple.min.js"></script>
-
-</body>
-</html>
