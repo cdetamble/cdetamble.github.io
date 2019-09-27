@@ -107,7 +107,7 @@ namespace CreateHtmlFiles
 					var key = line.Substring(1, line.IndexOf(" ")).Trim();
 					game.Add(key, ExtractFrom(key, line));
 				}
-				game.Add("name", FromBrowsableString(Path.GetFileNameWithoutExtension(gamePath)));
+				//game.Add("name", FromBrowsableString(Path.GetFileNameWithoutExtension(gamePath)));
 				games.Add(game);
 			}
 

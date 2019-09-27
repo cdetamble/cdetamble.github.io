@@ -17,9 +17,31 @@
 });
 
 function initGameCards() {
-	$('.main-image').click((event) => {
-		console.log($(event.target).parents('.image-overlay'));
-		$(event.target).parents('.image-overlay').find('.image-slider a.fancybox').first().click();
+	$('.game-card:first-child').addClass('focused');
+	$('.game-card').click((event) => {
+		const $gameCard = $(event.target).parents('.game-card');
+		if (!$gameCard.hasClass('focused')) {
+			$('.game-card').removeClass('focused');
+			$gameCard.addClass('focused');
+			event.stopPropagation();
+			return false;
+		}
+	});
+	$('.game-card .main-image').click((event) => {
+		if ($(event.target).parents('.game-card').hasClass('focused')) {
+			$(event.target).parents('.image-overlay').find('.image-slider a.fancybox').first().click();
+			event.stopPropagation();
+			return false;
+		}
+	});
+	$('.game-card a').click((event) => {
+		const $gameCard = $(event.target).parents('.game-card');
+		if (!$gameCard.hasClass('focused')) {
+			$('.game-card').removeClass('focused');
+			$gameCard.addClass('focused');
+			event.stopPropagation();
+			return false;
+		}
 	});
 }
 

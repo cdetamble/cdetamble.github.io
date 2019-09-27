@@ -278,47 +278,7 @@ form input[type=submit]:hover,
 	color: #444;
 }
 	
-@media (max-width: 42rem) {
-	#hmenu {
-		display: none;
-	}
-	#hamburger {
-		display: inline-block;
-	}
-    main .container {
-        border-bottom-left-radius: 1px;
-        border-bottom-right-radius: 1px;
-    }
-	.blogpost-card {
-		margin: 1rem auto !important;
-		max-width: 28rem;
-	}
-}
 
-@media (max-width: 29rem) {
-	.blogpost-card {
-		margin: 1rem !important;
-	}
-}
-
-@media (min-width: 42rem) {
-	#vmenu {
-		display: none !important;
-	}
-	article {
-		padding: 0 1rem;
-	}
-	.blogpost-card {
-		width: calc(50% - 1.2rem);
-		display: inline-block;
-	}
-	.right-section {
-		position: absolute;
-	}
-	.game-card .game-description {
-		max-width: 27rem;
-	}
-}
 
 .text-center {
 	text-align: center;
@@ -524,11 +484,15 @@ ul.contact_information {
 	border-radius: 8px;
 	padding: 0 0.5rem;
 	font-size: 13px;
+	width: 9rem;
 }
 
 ul.contact_information > li:not(:last-child) {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+ul.contact_information > li span.text {
+	float: right;
 }
 ul.contact_information > li {
     line-height: 28px;
@@ -559,15 +523,6 @@ ul.contact_information li span.text {
     -moz-transition: all 0.15s ease;
     -o-transition: all 0.15s ease;
     transition: all 0.15s ease;
-}
-
-@media screen and (min-width: 566px) {
-    ul.contact_information > li span.text {
-        float: right;
-    }
-    #menu-content, ul.contact_information li br {
-        display: none;
-    }
 }
 
 span.hoverable:hover {
@@ -628,6 +583,12 @@ button:active {
 .blogpost-card {
     color: inherit;
     text-decoration: none;
+}
+
+.blogpost-card .title {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 ul.expanded li {
@@ -739,27 +700,39 @@ ul.undecorated li {
 	margin: 0;
 }
 .game-card {
+	margin: 0.5rem auto 2rem;
 	max-width: 33rem;
-	border-radius: 8px;
-	margin-top: 2rem;
 	background: white;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	border-radius: 8px;
+	opacity: 0.2;
+	transition: all 0.15s ease;
+	-webkit-transition: all 0.15s ease;
+}
+.game-card:hover {
+	opacity: 0.5;
+}
+.game-card:not(.focused) {
+	cursor: pointer;
+}
+.game-card.focused {
+	opacity: 1;
 }
 .game-card .main-image {
 	text-align: center;
 	width: 100%;
-	border-top-right-radius: 8px;
-	border-top-left-radius: 8px;
 	height: 100%;
 	cursor: pointer;
 	background-size: cover;
 	background-position: center;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
 }
 .game-card .image-overlay {
 	position: relative;
 	border-top-right-radius: 8px;
 	border-top-left-radius: 8px;
-	height: 10rem;
+	height: 13rem;
 }
 .game-card .ranking {
 	position: absolute;
@@ -799,8 +772,9 @@ ul.undecorated li {
 	bottom: 5px;
 }
 .image-slider img {
-	height: 2rem;
-	border-radius: 1px;
+	height: 1.5rem;
+	width: 2.5rem;
+	border-radius: 4px;
 	display: inline-block;
 	margin-left: 5px;
 	transition: all 0.15s ease;
@@ -827,20 +801,19 @@ ul.undecorated li {
 .game-card .game-description {
 	margin-bottom: 1rem;
 	padding-left: 1.5rem;
-	padding-top: 1rem;
 	font-size: 13px;
 }
 .game-card .game-name {
 	padding-top: 0.5rem;
 	padding-left: 1.5rem;
+	padding-right: 0.5rem;
 }
 
 .vignette {
-	box-shadow: inset 0 0 3em 2em #000;
+	box-shadow: inset -5px -51px 2em -1em #000;
 }
 .game-card .right-section {
-	margin: 0 1rem;
-	right: 0.5rem;
+	right: 1.5rem;
 	top: 1.5rem;
 }
 .game-card .download-button {
@@ -857,17 +830,16 @@ ul.undecorated li {
 	top: 1rem;
 }
 .game-card .play-button {
-	margin-top: 10px;
+	margin-top: 1rem;
+	margin-left: 0.5rem;
 	transition: all 0.15s ease;
 	-webkit-transition: all 0.15s ease;
+	bottom: 0.5rem;
+	right: 0.5rem;
 }
 .game-card .play-button:hover {
 	opacity: 0.75;
 }
-.game-card .stars {
-	padding: 0 1.5rem;
-}
-
 
 
 
@@ -1174,3 +1146,77 @@ ul.undecorated li {
 
 
 
+
+@media (max-width: 42rem) {
+	#hmenu {
+		display: none;
+	}
+	#hamburger {
+		display: inline-block;
+	}
+	main .container {
+		border-bottom-left-radius: 1px;
+		border-bottom-right-radius: 1px;
+	}
+	.blogpost-card {
+		margin: 1rem auto !important;
+		max-width: 28rem;
+	}
+}
+
+@media (max-width: 29rem) {
+	.blogpost-card {
+		margin: 1rem !important;
+	}
+}
+
+@media (min-width: 42rem) {
+	#vmenu {
+		display: none !important;
+	}
+	article {
+		padding: 0 1rem;
+	}
+	.blogpost-card {
+		width: calc(50% - 1.2rem);
+		display: inline-block;
+	}
+}
+@media (max-width: 33rem) {
+	.game-card .right-section {
+		margin-left: 1.5rem;
+		margin-bottom: 0.5rem;
+	}
+	.game-card {
+		margin: 0.5rem;
+	}
+}
+@media (min-width: 24rem) {
+	.game-card .play-button {
+		position: absolute;
+	}
+}
+
+@media (max-width: 24rem) {
+	ul.contact_information {
+		width: 100%;
+	}
+	.game-card .right-section {
+		margin-right: 1.5rem;
+	}
+	.game-card .ranking {
+		bottom: inherit;
+		left: inherit;
+		top: 5px;
+		right: 5px;
+	}
+}
+
+@media (min-width: 33rem) {
+	.game-card .right-section {
+		position: absolute;
+	}
+	.game-card .game-description {
+		max-width: 22rem;
+	}
+}
