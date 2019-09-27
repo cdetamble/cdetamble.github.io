@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<meta charset="utf-8">
+	<title>Let's create a window! - MouthlessGames</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="follow" />
+	<meta name="revisit-after" content="2 days" />
+	<meta name="language" content="en" />
+	<meta name="author" content="Christian DeTamble" />
+	<meta name="publisher" content="MouthlessGames" />
+	<meta name="copyright" content="MouthlessGames" />
+	<meta name="keywords" content="game, gamedev, game developer, indie game developer, austria, game development, devblog, tutorials, android, app, android studio, ludum dare, 3d game engine, libgdx, java" />
+	<meta name="description" content="MouthlessGames is an independent game developer from Austria." />
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/modal.css">
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/buttons.css">
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/icomoon.css">
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/mouthlessgames/css/ripple.css">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/ico" href="/mouthlessgames/favicon.ico">
+
+	<!-- Fancybox -->
+	<link rel="stylesheet" href="/mouthlessgames/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/mouthlessgames/fancybox/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen"/>
+
+	<script>
+		var Globals = {};
+		Globals.baseUrl = "/mouthlessgames/";
+		Globals.databaseUrl = "http://localhost/therefactory/api/mouthlessgames/";
+		Globals.blogPostId = "lets-create-a-window";
+		
+	</script>
+</head>
+<body>
+
+<nav>
+	<div class="container">
+		<ul id="logo_container">
+			<li class="mdc-ripple-surface">
+				<a class="ripplelink" href="/mouthlessgames/">
+					<img id="logo" src="/mouthlessgames/img/title7.jpg">
+				</a>
+			</li>
+		</ul>
+		<div class="right-align">
+			<ul id="hmenu">
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/games">Games</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/blog">Blog</a></li>
+				<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/about">About</a></li>
+			</ul>
+			<ul id="hamburger">
+				<li id="toggle_vmenu" class="mdc-ripple-surface"><a class="ripplelink" href="#"><span class="icon-menu"></span></a></li>
+			</ul>
+		</div>
+
+		<ul id="vmenu">
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/games">Games</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/blog">Blog</a></li>
+			<li class="mdc-ripple-surface"><a class="ripplelink" href="/mouthlessgames/about">About</a></li>
+		</ul>
+	</div>
+</nav>
+
+<main>
+	<div class="container with-bg">
+<div class="image-container fixed">
+	<div class="topic">3D Game Tutorial</div>
+	<div class="image" style="background-image: url('/mouthlessgames/img/youtube/thumbnail.png')"></div>
+</div>
+<article itemid="lets-create-a-window" class="blogpost">
+	<h1 class="title">Let's create a window!</h1>
+	<p class="date">August 25, 2019 <span class="fa icon-bubbles"></span> <span class="disqus-comment-count" data-disqus-identifier="lets-create-a-window"></span></p>
+	
+	<div id="disqus_thread"></div>
+
+	<script>
+
+		/**
+		 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+        var disqus_config = function () {
+        //this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = lets-create-a-window; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+		(function() { // DON'T EDIT BELOW THIS LINE
+			var d = document, s = d.createElement('script');
+			s.src = 'https://mouthlessgames.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+		})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</article>
+
+	</div>
+</main>
+
+<footer>
+
+
+	<p>
+		<span>Made by © 2019 MouthlessGames</span>
+		<br>
+		<a href="/mouthlessgames/legal">Legal Notice & Privacy</a>
+	</p>
+
+	<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-follow-button twitter-follow-button-rendered" style="position: static; visibility: visible; width: 63px; height: 20px;" title="Twitter Follow Button" src="https://platform.twitter.com/widgets/follow_button.d6364fae9340b0be5f13818370141fd0.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=MouthlessGames&amp;show_count=false&amp;show_screen_name=false&amp;size=m&amp;time=1568751879251" data-screen-name="MouthlessGames"></iframe><script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</footer>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 id="modal-title" class="modal-title">Error</h4>
+			</div>
+			<div class="modal-body">
+				<p id="modal-message">Something went wrong.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	
+	</div>
+</div>
+
+<!-- Reading Bar -->
+<div id="readingbar">
+    <div id="readingbar-progress"></div>
+</div>
+
+<script src="/mouthlessgames/js/jquery-1.12.4.min.js"></script>
+<script src="/mouthlessgames/js/bootstrap.min.js"></script>
+<script src="/mouthlessgames/js/main.js"></script>
+
+<!-- Fancybox -->
+<script type="text/javascript" src="/mouthlessgames/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="/mouthlessgames/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
+<script type="text/javascript" src="/mouthlessgames/fancybox/helpers/jquery.fancybox-media.js"></script>
+<script type="text/javascript" src="/mouthlessgames/js/mdc.ripple.min.js"></script>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
     initFancyBox();
     initMaterialRipple();
     initReadingBar();
-    initNews();
+    initBlogpostCards();
     initImageLinks();
     initGameCards();
 
@@ -56,7 +56,7 @@ function initImageLinks() {
 	});
 }
 
-function initNews() {
+function initBlogpostCards() {
     $('.blogpost-card').click((event) => {
        window.location.href = Globals.baseUrl + 'blog/' + $(event.currentTarget).attr('itemid');
     });
@@ -149,7 +149,11 @@ function initActiveMenuItem() {
 		}
 	});
 	if (!hasFoundItem) {
-		$('#hmenu li:first-child, #vmenu li:first-child').addClass("active");
+		if (subpage === 'legal') {
+			$('#hmenu li:last-child, #vmenu li:last-child').addClass("active");
+		} else {
+			$('#hmenu li:first-child, #vmenu li:first-child').addClass("active");
+		}
 	}
 }
 

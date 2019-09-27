@@ -205,11 +205,13 @@ hr.dashed {
 
 #hamburger {
 	display: none;
+	height: 100%;
 }
 
 #hamburger span {
-	font-size: 20px;
-	line-height: 25px;
+	font-size: 28px;
+	line-height: 27px;
+	color: #f1f1f1;
 }
 
 nav .right-align {
@@ -262,7 +264,7 @@ form input[type=submit]:hover,
 #vmenu li {
 	left: 0;
 	right: 0;
-	background-color: #ffffffd9;
+	background-color: #e4e4e4;
 	display: none;
 	height: 40px
 }
