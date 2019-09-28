@@ -37,6 +37,7 @@ nav {
 
 ul {
     margin: 0;
+	padding-right: 1rem;
 }
 
 main {
@@ -175,9 +176,8 @@ a:hover span {
 }
 
 hr {
-	padding: 0;
-    margin: 1rem;
-	width: 100%;
+	margin: 1rem auto;
+	width: 90%;
 	max-width: 38.125rem;
 }
 

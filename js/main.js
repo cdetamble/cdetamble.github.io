@@ -143,7 +143,7 @@ function initActiveMenuItem() {
 	}
 	$('#hmenu li a, #vmenu li a').each((i, a) => {
 		const pageId = $(a).text().replace(" ", "-").toLowerCase();
-		if (subpage.indexOf(pageId) !== -1) {
+		if (subpage.startsWith(pageId)) {
 			$(a).parent().addClass("active");
 			hasFoundItem = true;
 		}
