@@ -28,10 +28,17 @@
         <h2 class="game-name" style="padding-top: 0.5rem;display: inline-block;">{name}</h2>
         {num-stars}
 
-        <p class="game-description">{description}</p>
+        <div class="game-quotes">
+            {game-quotes}
+        </div>
+
+        <p class="game-description">
+            {description}
+        </p>
 
         <div class="right-section">
             <ul class="contact_information outset">
+                <li><span class="fa icon-folder"></span><strong>Type</strong> <span class="text">{type}</span></li>
                 <li><span class="fa icon-dice"></span><strong>Genre</strong> <span class="text">{genre}</span></li>
                 <li><span class="fa icon-stopwatch"></span><strong>Playtime</strong> <span class="text">{playtime}</span></li>
             </ul>

@@ -43,6 +43,28 @@ function initGameCards() {
 			return false;
 		}
 	});
+	setTimeout(circleGameQuotes, 1500);
+}
+
+function circleGameQuotes() {
+	const $current = $('.game-card .quote:visible');
+	const nexts = [];
+
+	$current.each((index, item) => {
+		let $next = $(item).next('.quote');
+		if ($next.length === 0) {
+			$next = $(item).parents('.game-quotes').find('.quote').first();
+		}
+		nexts.push($next.first());
+	});
+
+	$current.fadeOut('slow', () => {
+		for (const i in nexts) {
+			nexts[i].fadeIn('slow');
+		}
+	});
+
+	setTimeout(circleGameQuotes, 3500);
 }
 
 function initImageLinks() {

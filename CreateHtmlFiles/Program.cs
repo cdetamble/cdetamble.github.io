@@ -159,7 +159,18 @@ namespace CreateHtmlFiles
 					}
 				}
 
+				var quotesHtml = new StringBuilder();
+				if (game.ContainsKey("quotes"))
+				{
+					string[] quotes = game["quotes"].Split(';');
+					foreach (var quote in quotes)
+					{
+						quotesHtml.Append("<div class=\"quote\">\"" + quote + "\"</div>");
+					}
+				}
+
 				gameHtml = gameHtml
+					.Replace("{game-quotes}", quotesHtml.ToString())
 					.Replace("{previews}", previewsHtml.ToString())
 					.Replace("{main-image}", mainImage)
 					.Replace("{name-image}", _baseUrl + "img/" + browsableGameName + "/name.png");
