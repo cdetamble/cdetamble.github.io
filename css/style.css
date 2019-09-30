@@ -505,7 +505,9 @@ ul.contact_information > li {
     background-repeat: no-repeat;
     background-size: 18px 18px;
 }
+ul.contact_information > li:hover {
 
+}
 ul.contact_information > li span.fa {
     width: 20px;
     display: block;
