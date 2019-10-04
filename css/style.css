@@ -59,9 +59,9 @@ nav ul li {
 }
 
 #logo_container {
-	left: -60px;
 	position: relative;
 	height: 100%;
+	left: -25px;
 }
 
 nav ul li a {
@@ -136,6 +136,7 @@ a > #logo {
 	position: relative;
     transition: all 0.15s ease;
     -webkit-transition: all 0.15s ease;
+	height: 55px;
 }
 
 .date {
