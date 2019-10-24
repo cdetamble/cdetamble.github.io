@@ -45,7 +45,9 @@ function initGameCards() {
 	
 	const $preselected = $(window.location.hash);
 	if ($preselected.length > 0) {
-		selectGameCard($preselected.next('.game-card'))
+		selectGameCard($preselected.next('.game-card'));
+	} else {
+		selectGameCard($('.game-card').first());
 	}
 }
 

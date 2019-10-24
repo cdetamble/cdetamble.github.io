@@ -12,7 +12,7 @@ namespace CreateHtmlFiles
     {
         static void Main(string[] args)
         {
-            var builder = new Builder("/mouthlessgames/", false);
+            var builder = new Builder("/mouthlessgames/", true);
             
             builder.CreateGeneric("about", "About");
 			builder.CreateGeneric("legal", "Legal");
