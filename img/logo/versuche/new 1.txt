@@ -1,0 +1,2 @@
+https://eu0.flamingtext.com/net-fu/dynamic.cgi?script=northern-lights-logo&text=OUTHLESS&fontsize=38&fontname=Squealer&textBorder=0&justify=0&textOutlineSize=1&fillTextType=0&fillTextColor=%23000&fillTextPattern=Mud&fillTextGradient=Dark+1&fillOutlineType=1&fillOutlineColor=%23862100&fillOutlinePattern=Crystals&fillOutlineGradient=Rounded+edge&outlineSize=0&overlayPattern=Povray+T_Stone11&shadowType=0&shadowGlowColor=%23593100&shadowSelfXOffset=5&shadowSelfYOffset=5&backgroundRadio=0&autocrop=on#enterText
+size 83
