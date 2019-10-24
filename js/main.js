@@ -20,9 +20,7 @@ function initGameCards() {
 	$('.game-card:first-child').addClass('focused');
 	$('.game-card').click((event) => {
 		const $gameCard = $(event.target).parents('.game-card');
-		if (!$gameCard.hasClass('focused')) {
-			$('.game-card').removeClass('focused');
-			$gameCard.addClass('focused');
+		if (selectGameCard($gameCard)) {
 			event.stopPropagation();
 			return false;
 		}
@@ -44,6 +42,20 @@ function initGameCards() {
 		}
 	});
 	setTimeout(circleGameQuotes, 1500);
+	
+	const $preselected = $(window.location.hash);
+	if ($preselected.length > 0) {
+		selectGameCard($preselected.next('.game-card'))
+	}
+}
+
+function selectGameCard($gameCard) {
+	if (!$gameCard.hasClass('focused')) {
+		$('.game-card').removeClass('focused');
+		$gameCard.addClass('focused');
+		return true;
+	}
+	return false;
 }
 
 function circleGameQuotes() {

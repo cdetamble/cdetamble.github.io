@@ -155,7 +155,11 @@ a > #logo {
 	position: absolute;
 	right: 1rem;
 }
-	
+
+.font-small {
+	font-size: small;
+}
+
 p {
     margin: 0;
     padding: 0.5rem 1rem;

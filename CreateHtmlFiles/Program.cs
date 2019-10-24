@@ -173,6 +173,7 @@ namespace CreateHtmlFiles
 					.Replace("{game-quotes}", quotesHtml.ToString())
 					.Replace("{previews}", previewsHtml.ToString())
 					.Replace("{main-image}", mainImage)
+					.Replace("{browsable-name}", browsableGameName)
 					.Replace("{name-image}", _baseUrl + "img/" + browsableGameName + "/name.png");
 
 				gameHtml = gameHtml.Replace("{baseUrl}", _baseUrl);
@@ -201,7 +202,9 @@ namespace CreateHtmlFiles
 					.Replace("{image}", "{baseUrl}img/" + post.Image)
 					.Replace("{topic}", post.Topic)
 					.Replace("{baseUrl}", _baseUrl)
-					.Replace("{description}", post.Description.Trim()));
+					.Replace("{description}", post.Description.Trim())
+					.Replace("{readtime}", post.Readtime.Trim())
+					);
 			}
 
 			string html = _fragments["header"]
@@ -241,15 +244,17 @@ namespace CreateHtmlFiles
 				string topic = ExtractFrom("topic", lines[2]);
 				string image = ExtractFrom("image", lines[3]);
 				string description = ExtractFrom("description", lines[4]);
+				string readtime = ExtractFrom("readtime", lines[5]);
 
 				lines[0] = "";
                 lines[1] = "";
                 lines[2] = "";
 				lines[3] = "";
 				lines[4] = "";
+				lines[5] = "";
 				string content = string.Join("", lines);
 
-				var blogpost = new Blogpost(id, title, date, description, topic, image, content);
+				var blogpost = new Blogpost(id, title, date, description, topic, image, content, readtime);
 				blogposts.Add(blogpost);
 
 				var folder = Path.Combine(_rootDir, "blog", id);
