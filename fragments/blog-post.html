@@ -4,7 +4,7 @@
 </div>
 <article itemid="{id}" class="blogpost">
 	<h1 class="title">{title}</h1>
-	<p class="date">{date} <span class="fa icon-bubbles"></span> <span class="disqus-comment-count" data-disqus-identifier="{id}"></span></p>
+	<p class="date">{date} <span class="fa icon-bubbles"></span> <span class="disqus-comment-count" data-disqus-url="https://mouthlessgames.com/blog/{id}"></span></p>
 	{content}
 	<div id="disqus_thread"></div>
 
@@ -15,7 +15,7 @@
 		 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
         var disqus_config = function () {
-        //this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.url = "https://mouthlessgames.com/blog/{id}";  // Replace PAGE_URL with your page's canonical URL variable
         this.page.identifier = "{id}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
 

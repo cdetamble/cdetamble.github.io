@@ -10,9 +10,11 @@ namespace CreateHtmlFiles
 {
     class Program
     {
+		private static bool isLocalhost = true;
+
         static void Main(string[] args)
         {
-            var builder = new Builder("/", true);
+            var builder = new Builder(isLocalhost  ? "http://localhost:8080/mouthlessgames/" : "/", true);
             
             builder.CreateGeneric("about", "About");
 			builder.CreateGeneric("legal", "Legal");
@@ -40,7 +42,6 @@ namespace CreateHtmlFiles
             List<string> directories = new List<string>();
             var fragmentsPath = Path.Combine(_rootDir, "fragments");
             directories.Add(fragmentsPath);
-            directories.Add(Path.Combine(fragmentsPath, "custom-js"));
 
             foreach (var directory in directories)
             {
