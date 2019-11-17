@@ -1,4 +1,6 @@
-﻿namespace CreateHtmlFiles
+﻿using System.Collections;
+
+namespace CreateHtmlFiles
 {
 	internal class Blogpost
 	{
@@ -23,5 +25,7 @@
 		public string Topic { get; internal set; }
 		public string Content { get; internal set; }
 		public string Readtime { get; internal set; }
+
+		
 	}
 }

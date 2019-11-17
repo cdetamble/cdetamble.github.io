@@ -10,7 +10,7 @@ namespace CreateHtmlFiles
 {
     class Program
     {
-		private static bool isLocalhost = false;
+		private static bool isLocalhost = true;
 
         static void Main(string[] args)
         {
@@ -276,6 +276,8 @@ namespace CreateHtmlFiles
 
                 WriteAllText(Path.Combine(folder, "index.html"), ResolvePlaceholders(html));
             }
+
+			blogposts.Reverse();
 
 			return blogposts;
 		}
