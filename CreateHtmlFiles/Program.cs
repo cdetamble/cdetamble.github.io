@@ -10,7 +10,7 @@ namespace CreateHtmlFiles
 {
     class Program
     {
-		private static bool isLocalhost = true;
+		private static bool isLocalhost = false;
 
         static void Main(string[] args)
         {
