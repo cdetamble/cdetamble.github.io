@@ -8,16 +8,19 @@ body {
 	margin: 0 auto;
     padding: 20px;
     font-family: 'Lancelot', serif;
-	font-size: 28px;
+	font-size: 25px;
     color: #7E735F;
-	
+
 	background-image: url(../img/background.jpg);
     background-position: top;
     background-repeat: no-repeat;
     background-color: black;
-	
+
 	max-width: 45rem;
-    margin: auto;
+}
+
+b {
+	font-size: 28px;
 }
 
 #logo {
@@ -30,12 +33,12 @@ body {
 }
 
 a {
-	color: #444;
+	color: #888;
 	transition: color 0.5s;
 }
 
 a:hover {
-	color: #aaa;
+	color: #ccc;
 }
 
 .image-box {
@@ -74,18 +77,21 @@ a:hover {
 	box-shadow: 0 1px 3px 2px rgb(0, 0, 0);
 }
 
-.small {
-	font-size: 26px;
-}
-
-.smaller {
-	font-size: 24px;
-}
-
-.smallest {
-	font-size: 20px;
-}
-
 .italic {
 	font-style: italic;
+}
+
+@media screen and (max-width: 425px) {
+	body {
+		font-size: 22px;
+	}
+	b {
+		font-size: 24px;
+	}
+}
+
+@media screen and (max-width: 380px) {
+	.hide-mobile {
+		display: none;
+	}
 }
