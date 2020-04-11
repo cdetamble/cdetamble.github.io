@@ -30,6 +30,11 @@ b {
 #logo img {
 	max-width: 350px;
 	width: 100%;
+	transition: all 0.5s;
+}
+
+#logo img:hover {
+	transform: scale(1.025);
 }
 
 a {
