@@ -6,9 +6,9 @@
 
 body {
 	margin: 0 auto;
-    padding: 20px;
-    font-family: 'Lancelot', serif;
-	font-size: 25px;
+    padding: 28px;
+    font-family: 'Bellefair', serif;
+	font-size: 24px;
     color: #7E735F;
 
 	background-image: url(../img/background.jpg);
@@ -25,16 +25,22 @@ b {
 
 #logo {
 	text-align: center;
+	margin-top: 25px;
+    margin-bottom: 40px;
 }
 
 #logo img {
-	max-width: 350px;
+	max-width: 312px;
 	width: 100%;
 	transition: all 0.5s;
+	opacity: 1;
+	
 }
 
 #logo img:hover {
 	transform: scale(1.025);
+	opacity: 0.75;
+	
 }
 
 a {
@@ -75,6 +81,17 @@ a:hover {
 	width: 100%;
 }
 
+footer {
+	position: fixed;
+	height: 105px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	z-index: 1;
+    background: black;
+}
+
 #readingbar-progress {
 	background-color: #ba9b75;
 	width: 0;
@@ -103,4 +120,8 @@ a:hover {
 	.hide-mobile {
 		display: none;
 	}
+}
+
+.text-center {
+	text-align: center;
 }
