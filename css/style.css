@@ -43,12 +43,15 @@ b {
 	
 }
 
-a {
+a,
+a:visited {
+	text-decoration: none;
 	color: #888;
 	transition: color 0.5s;
 }
 
 a:hover {
+	text-decoration: underline;
 	color: #ccc;
 }
 
