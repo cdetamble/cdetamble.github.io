@@ -30,7 +30,7 @@ b {
 }
 
 #logo img {
-	max-width: 312px;
+	max-width: 250px;
 	width: 100%;
 	transition: all 0.5s;
 	opacity: 1;
@@ -40,7 +40,6 @@ b {
 #logo img:hover {
 	transform: scale(1.025);
 	opacity: 0.75;
-	
 }
 
 a,
