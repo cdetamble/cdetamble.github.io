@@ -9,13 +9,8 @@ body {
     padding: 28px;
     font-family: 'Bellefair', serif;
 	font-size: 24px;
-    color: #7E735F;
-
-	background-image: url(../img/background.jpg);
-    background-position: top;
-    background-repeat: no-repeat;
-    background-color: black;
-
+    color: #ad8558;
+    background-color: white;
 	max-width: 45rem;
 }
 
@@ -34,7 +29,6 @@ b {
 	width: 100%;
 	transition: all 0.5s;
 	opacity: 1;
-	
 }
 
 #logo img:hover {
@@ -45,13 +39,13 @@ b {
 a,
 a:visited {
 	text-decoration: none;
-	color: #888;
+	color: #1b95e0;
 	transition: color 0.5s;
 }
 
 a:hover {
 	text-decoration: underline;
-	color: #ccc;
+	color: #0c7abf;
 }
 
 .image-box {
